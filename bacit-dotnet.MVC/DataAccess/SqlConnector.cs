@@ -65,6 +65,15 @@ namespace bacit_dotnet.MVC.DataAccess
             command.ExecuteNonQuery();
         }
 
+        private void SaveTeam(MySqlConnection conn)
+        {
+            string query = "insert into team (teamName) values (@teamName)"
+            using var command = conn.CreateCommand();
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = query;
+            command.ExecuteNonQuery();
+        }
+
         public void SetSuggestionsParam(SuggestionViewModel model)
         {
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
