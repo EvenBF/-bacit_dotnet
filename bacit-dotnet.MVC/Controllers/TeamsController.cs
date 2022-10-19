@@ -5,7 +5,7 @@ using bacit_dotnet.MVC.Models;
 
 namespace bacit_dotnet.MVC.Controllers
 {
-    public class TeamsController : Controllers
+    public class TeamsController : Controller
     {
         private readonly ILogger<TeamsController> _logger;
         private readonly ISqlConnector sqlConnector;
@@ -19,6 +19,12 @@ namespace bacit_dotnet.MVC.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult Save(TeamViewModel model)
+        {
+            sqlConnector.SetTeamParam(model);
+            return View(model);
         }
     }
 }

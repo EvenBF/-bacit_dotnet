@@ -6,7 +6,7 @@ namespace bacit_dotnet.MVC.Models.Teams
     {
         [Required]
         [MinLength (5, ErrorMessage = "Skriv et ordentlig teamnavn!")]
-        public string teamNavn { get; set; }
+        public string teamName { get; set; }
     }
 
 }

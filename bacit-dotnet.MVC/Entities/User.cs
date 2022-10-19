@@ -16,6 +16,9 @@
         public int Team { get; set; }
         public string Description { get; set; }
     }
-
-
+    public class Team
+    {
+        public string teamName { get; set;}
+        public int teamId { get; set;}
+    }
 }
