@@ -56,5 +56,17 @@ namespace bacit_dotnet.MVC.Controllers
             sqlConnector.UpdateValueSetSug(model, id);
             return View("Save",model);
         }
+
+        [HttpGet]
+        public IActionResult Delete(SuggestionViewModel model, int id)
+        {
+
+            var data = sqlConnector.FetSpeSug(id);
+            var model2 = new SuggestionModel();
+            model2.Sug = data;
+
+            sqlConnector.DeleteValueSetSug(model, id);
+            return View("Save", model);
+        }
     }
 }
