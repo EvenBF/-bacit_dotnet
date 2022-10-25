@@ -69,7 +69,7 @@ namespace bacit_dotnet.MVC.DataAccess
         {
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
             connection.Open();
-            var query = "insert into suggestions (Title, UserId, TeamId, Description, TimeAdded) values (@Title, @UserId, @TeamId, @Description, @TimeStamp)";
+            var query = "insert into suggestions (Title, UserId, TeamId, Description, TimeStamp) values (@Title, @UserId, @TeamId, @Description, @TimeStamp)";
             InsertSuggestions(query, connection, model);
         }
 
