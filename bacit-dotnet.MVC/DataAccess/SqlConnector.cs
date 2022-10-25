@@ -154,5 +154,28 @@ namespace bacit_dotnet.MVC.DataAccess
           
             command.ExecuteNonQuery();
         }
+
+        public void DeleteValueSetSug(SuggestionViewModel model, int id)
+        {
+            using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
+            connection.Open();
+            
+            var query = "DELETE FROM suggestions where sugId = @id;";
+            UpdateSuggestions(query, connection, model, id);
+            
+        }
+
+        private void DeleteSuggestions(String query, MySqlConnection conn, SuggestionViewModel user, int id)
+        {
+            Console.WriteLine(id);
+            
+            using var command = conn.CreateCommand();
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = query;
+
+            command.Parameters.AddWithValue("@id", id);
+          
+            command.ExecuteNonQuery();
+        }
     }
 }
