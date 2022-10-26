@@ -1,4 +1,6 @@
-﻿<form action="/suggestions/save" method="post">
+﻿@model bacit_dotnet.MVC.Models.TeamModel
+
+<form action="/suggestions/save" method="post">
     <ul>
         <li>
             <label for="Title">Tittel</label>
@@ -15,10 +17,11 @@
         <li>
             <label for="Team">Team</label>
             <select name=Team id=Team>
-                <option value="Salg og marked">Salg og marked</option>
-                <option value="Produksjon">Produksjon</option>
-                <option value="Teknisk">Teknisk</option>
-                <option value="Logistikk">Logistikk</option> 
+                
+                    @foreach (var team in Model.Teams)
+                {
+                   <option value="@team.teamId">@team.teamName</option>
+                }
         </li>
     </ul>
     <input type="submit" value="Lagre" />

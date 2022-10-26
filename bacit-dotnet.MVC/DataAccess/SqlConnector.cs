@@ -179,5 +179,25 @@ namespace bacit_dotnet.MVC.DataAccess
           
             command.ExecuteNonQuery();
         }
+
+        public IEnumerable<team> GetTeam()
+        {
+
+            using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
+            connection.Open();
+
+            var reader = ReadData("SELECT teamId, teamName from team;", connection);
+
+            var users = new List<team>();
+            while (reader.Read())
+            {
+                var team = new team();
+                team.teamId = reader.GetInt32("teamId");
+                team.teamName = reader.GetString("teamName");
+                users.Add(team);
+            }
+            connection.Close();
+            return users;
+        }
     }
 }
