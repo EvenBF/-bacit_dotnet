@@ -46,11 +46,10 @@ namespace bacit_dotnet.MVC.Controllers
         public IActionResult Edit(int id)
         {
 
-            var data = sqlConnector.FetSpeSug(id);
-            var model = new SuggestionModel();
-            model.Sug = data;
-
-            return View(model);
+            dynamic mymodel = new SuggestionModel();
+            mymodel.Sug = sqlConnector.FetSpeSug(id);
+            mymodel.Teams = sqlConnector.GetTeam();
+            return View(mymodel);
         }
 
         [HttpPost]

@@ -20,10 +20,10 @@
         <li>
             <label for="Team">Team</label>
             <select name=Team id=Team>
-                <option value="Salg og marked">Salg og marked</option>
-                <option value="Produksjon">Produksjon</option>
-                <option value="Teknisk">Teknisk</option>
-                <option value="Logistikk">Logistikk</option> 
+                    @foreach (var team in Model.Teams)
+                {
+                   <option value="@team.teamId">@team.teamName</option>
+                }
             </select>
         </li>
         <li>
