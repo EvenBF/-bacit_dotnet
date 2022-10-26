@@ -1,12 +1,12 @@
 body {
-    background-color: #e4d3bf;
+    background-color: white;
 }
 
 h1, h2, h3, p, a {
     color: #030404;
 }
 
-a{
+h1, h2, a{
     font-family: 'Trebuchet MS', sans-serif;
 }
 
@@ -14,21 +14,12 @@ h2 {
     text-align: center;
 }
 
-.logo {
+h1 {
     position: absolute;
-    /*top: 0vh;
-    left: 5vw;
-    -ms-transform: translate(50%, 50%);
-    transform: translate(50%, 50%);*/
-    vertical-align: middle;
-    position:absolute;
-    top: -60vh;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-    -webkit-filter: drop-shadow(5px 5px 5px #222);
-    filter: drop-shadow(5px 5px 5px #222);
+    top: 25%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .forslag:hover{
@@ -37,31 +28,31 @@ h2 {
 }
 
 .knappIndex {
-    font-size: 150%;
+    font-size: 200%;
 }
 
 .forslag{
-    font-weight: bold;
+    font-weight: 500;
     color: #303131;
     background-color: #b9bfc8;
     border: none;
     padding: 10px;
     box-shadow: 5px 5px #939ca9;
-    width: 30vw;
-    height: 10vh;
+    width: 20vw;
+    height: 20vh;
 }
 
 #en{
     position: absolute;
-    top: 40%;
-    left: 50%;
+    top: 50%;
+    left: 25%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
 
 #to {
     position: absolute;
-    top: 70%;
+    top: 50%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -69,8 +60,8 @@ h2 {
 
 #tre {
     position: absolute;
-    top: 55%;
-    left: 50%;
+    top: 50%;
+    left: 75%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
