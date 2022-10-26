@@ -1,0 +1,28 @@
+#knapp1 {
+    font-weight: 500;
+    color: #303131;
+    background-color: #b9bfc8;
+    border: none;
+    width: 6vw;
+    height: 5vh;
+    border-radius: 12px;
+}
+
+#knapp2 {
+    text-align: center;
+    font-weight: 500;
+    color: #303131;
+    background-color: #b9bfc8;
+    border: none;
+    width: 6vw;
+    height: 5vh;
+    border-radius: 12px;
+}
+
+#knapp1:hover {
+    background-color: #bb9a6f;
+}
+
+#knapp2:hover {
+    background-color: #bb9a6f;
+}
