@@ -1,5 +1,6 @@
 ﻿using bacit_dotnet.MVC.Entities;
 using bacit_dotnet.MVC.Models.Suggestions;
+using System.Data;
 
 namespace bacit_dotnet.MVC.DataAccess
 {
@@ -13,5 +14,8 @@ namespace bacit_dotnet.MVC.DataAccess
         void UpdateValueSetSug(SuggestionViewModel model, int id);
 
         void DeleteValueSetSug(SuggestionViewModel model, int id);
+
+        IDbConnection GetDbConnection();
+
     }
 }

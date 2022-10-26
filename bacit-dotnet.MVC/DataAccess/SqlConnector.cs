@@ -1,6 +1,7 @@
 ﻿using bacit_dotnet.MVC.Entities;
 using MySqlConnector;
 using bacit_dotnet.MVC.Models.Suggestions;
+using System.Data;
 
 namespace bacit_dotnet.MVC.DataAccess
 {
@@ -12,7 +13,10 @@ namespace bacit_dotnet.MVC.DataAccess
         {
             this.config = config;
         }
-
+          public IDbConnection GetDbConnection()
+        {
+            return new MySqlConnection(config.GetConnectionString("MariaDb"));
+        }
         public IEnumerable<User> GetUsers()
         {
 
