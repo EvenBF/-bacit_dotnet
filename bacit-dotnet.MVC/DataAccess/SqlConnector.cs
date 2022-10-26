@@ -134,7 +134,7 @@ namespace bacit_dotnet.MVC.DataAccess
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
             connection.Open();
             
-            var query = "update suggestions set title=@Title,userid=@Name,teamId = @Team,description=@Description where sugId =  @id;";
+            var query = "update suggestions set title=@Title,userid=@Name,teamId = @Team,description=@Description, Status = @Status where sugId =  @id;";
             UpdateSuggestions(query, connection, model, id);
             
         }
@@ -150,9 +150,12 @@ namespace bacit_dotnet.MVC.DataAccess
             command.Parameters.AddWithValue("@Name", user.Name);
             command.Parameters.AddWithValue("@Team", user.Team);
             command.Parameters.AddWithValue("@Description", user.Description);
+            command.Parameters.AddWithValue("@Status", user.Status);
             command.Parameters.AddWithValue("@id", id);
+            
           
             command.ExecuteNonQuery();
         }
+
     }
 }

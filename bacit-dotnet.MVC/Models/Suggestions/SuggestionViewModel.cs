@@ -10,6 +10,7 @@ namespace bacit_dotnet.MVC.Models.Suggestions
         public string Name { get; set; }
         public int Team { get; set; }
         public string Description { get; set; }
+        public string Status { get; set; }
 
         public DateTime TimeStamp { get; set; }
         public SuggestionViewModel()
