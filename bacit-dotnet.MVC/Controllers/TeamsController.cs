@@ -20,7 +20,7 @@ namespace bacit_dotnet.MVC.Controllers
         {
             return View();
         }
-
+        [HttpPost]
         public IActionResult Save(TeamViewModel model)
         {
             sqlConnector.SetTeamParam(model);
