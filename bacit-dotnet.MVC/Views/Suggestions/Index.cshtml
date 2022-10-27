@@ -1,11 +1,13 @@
 ﻿@model bacit_dotnet.MVC.Models.TeamModel
 
-<form action="/suggestions/save" method="post">
-    <ul>
-        <li>
-            <label for="Title">Tittel</label>
-            <input type="text" required="required" oninvalid="this.setCustomValidity('Vennligst skriv en ordentlig tittel')" oninput="this.setCustomValidity('')"name="Title" />
-        </li>
+<div class="container">
+    <form action="/suggestions/save" method="post">
+        <div class="row">
+            <div class="col-25">
+                <label for="Title">Tittel</label>
+                <input type="text" required="required" oninvalid="this.setCustomValidity('Vennligst skriv en ordentlig tittel')" oninput="this.setCustomValidity('')"name="Title" />
+            </div>
+        </div>
         <li>
             <label for="Name">Navn</label>
             <input type="text" required="required" oninvalid="this.setCustomValidity('Vennligst fyll inn navn :-)')" oninput="this.setCustomValidity('')"name="Name" />
@@ -23,6 +25,6 @@
                    <option value="@team.teamId">@team.teamName</option>
                 }
         </li>
-    </ul>
     <input type="submit" value="Lagre" />
-</form> 
+    </form> 
+</div>
