@@ -5,11 +5,10 @@
    Forslagsliste
 </h1>
 
-<ul>
+<div class="flex-container">
     @foreach (var user in Model.Sug)
     {
-        <li>
-            <div>
+        <div>
             <h3> @user.Title</h3>
             <p>Navn: @user.Name</p> 
             <p>Team: @user.Team </p> 
@@ -18,9 +17,9 @@
             <p>Status: @user.Status</p>
             <a href="/Suggestions/Edit?id=@user.sugId"><button type="button" id="knapp1">Rediger</button></a>
             <a href="/Suggestions/Delete?id=@user.sugId"><button type="button" id="knapp2" button onclick="return confirm('Vil du slette dette forslaget for alltid?');">Slett</button></a>
-            </div>
-        </li>
+        </div>
     }
+</div>
 
             <form action="/suggestions/Godkjenn" method="post">
 

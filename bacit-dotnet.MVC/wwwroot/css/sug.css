@@ -1,10 +1,36 @@
+body {
+    background-color: white;
+}
+
+h1, h2, h3, p, a{
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin: 40px;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .flex-container > div {
+    background-color: #f1f1f1;
+    width: 400px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 12px;
+  }
+
 #knapp1 {
     font-weight: 500;
     color: #303131;
     background-color: #b9bfc8;
     border: none;
-    width: 6vw;
-    height: 5vh;
+    width: 90px;
+    height: 45px;
     border-radius: 12px;
 }
 
@@ -14,15 +40,15 @@
     color: #303131;
     background-color: #b9bfc8;
     border: none;
-    width: 6vw;
-    height: 5vh;
+    width: 90px;
+    height: 45px;
     border-radius: 12px;
 }
 
 #knapp1:hover {
-    background-color: #bb9a6f;
+    background-color: #939ca9;
 }
 
 #knapp2:hover {
-    background-color: #bb9a6f;
+    background-color: #939ca9;
 }
