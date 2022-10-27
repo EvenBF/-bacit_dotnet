@@ -17,7 +17,29 @@
             <a class="btn btn-primary btn-sm" href="/Suggestions/Edit?id=@user.sugId">Rediger</a>
             <a class="btn btn-primary btn-sm" href="/Suggestions/Delete?id=@user.sugId">Slett</a>
 
-            </div>
         </li>
     }
+
+            <form action="/suggestions/Godkjenn" method="post">
+
+             @foreach (var user in Model.Sug) {
+            <input type="hidden" name="id" value=@user.sugId>
+            <ul> 
+                 <li>
+                     <label for="Status">Status</label>
+                         <select name=Status id=Status>
+                         <option value="Godkjent">Godkjent</option>
+                         <option value="Ikke Godkjent">Ikke Godkjent</option>
+                        </select>
+                    </li>
+            </ul>
+
+            <input type="submit" value="Lagre">
+            
+            }
+            
+            </form>
+
+
+    
 </ul>

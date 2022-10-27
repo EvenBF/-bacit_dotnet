@@ -13,5 +13,7 @@ namespace bacit_dotnet.MVC.DataAccess
         void UpdateValueSetSug(SuggestionViewModel model, int id);
 
         void DeleteValueSetSug(SuggestionViewModel model, int id);
+
+        void UpdateValueSetGodkjenn(SuggestionViewModel model, int id);
     }
 }

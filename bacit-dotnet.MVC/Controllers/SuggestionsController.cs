@@ -28,7 +28,7 @@ namespace bacit_dotnet.MVC.Controllers
             return View(model);
         }
         [HttpGet]
-        public IActionResult ViewSug()
+        public IActionResult ViewSug(int id)
         {
 
             var data = sqlConnector.FetchSug();
@@ -68,5 +68,14 @@ namespace bacit_dotnet.MVC.Controllers
             sqlConnector.DeleteValueSetSug(model, id);
             return View("Save", model);
         }
-    }
+
+         [HttpPost]
+        public IActionResult Godkjenn(SuggestionViewModel model, int id)
+        {
+
+            sqlConnector.UpdateValueSetGodkjenn(model, id);
+
+            return View("save",model);
+        }
+}
 }

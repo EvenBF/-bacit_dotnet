@@ -179,5 +179,26 @@ namespace bacit_dotnet.MVC.DataAccess
           
             command.ExecuteNonQuery();
         }
+
+        public void UpdateValueSetGodkjenn(SuggestionViewModel model, int id)
+        {
+            using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
+            connection.Open();
+        
+            string query = "update suggestions set Status = @Status where sugId =  @id;";
+            UpdateGodkjenn(query, connection, model, id);
+            
+        }
+         private void UpdateGodkjenn(String query, MySqlConnection conn, SuggestionViewModel user, int id){
+            Console.WriteLine(id);
+            Console.WriteLine(user.Status);
+            using var command = conn.CreateCommand();
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = query;
+            command.Parameters.AddWithValue("@Status", user.Status);
+            command.Parameters.AddWithValue("@id", id);
+
+            command.ExecuteNonQuery();
+         }
     }
 }
