@@ -1,0 +1,16 @@
+@model bacit_dotnet.MVC.Models.TeamModel
+
+<h1>
+    Teamliste
+</h1>
+<ul>
+    @foreach (var team in Model.Team) 
+    {
+        <li>
+            <div>
+                <h3>@team.teamName</h3>
+            </div>
+        </li>
+    }
+
+</ul>

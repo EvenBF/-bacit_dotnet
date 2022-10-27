@@ -1,6 +1,7 @@
 ﻿using bacit_dotnet.MVC.Entities;
 using MySqlConnector;
 using bacit_dotnet.MVC.Models.Suggestions;
+using bacit_dotnet.MVC.Models.Teams;
 
 namespace bacit_dotnet.MVC.DataAccess
 {
@@ -62,6 +63,23 @@ namespace bacit_dotnet.MVC.DataAccess
             using var command = conn.CreateCommand();
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = query;
+            command.ExecuteNonQuery();
+        }
+
+        public void SetTeamParam(TeamViewModel model)
+        {
+            using var connection = new  MySqlConnection(config.GetConnectionString("MariaDb"));
+            connection.Open();
+            var query = "insert into team (teamName) values (@teamName)";
+            InsertTeam(query, connection, model);
+        }
+
+        private void InsertTeam(string query, MySqlConnection conn, TeamViewModel model)
+        {
+            using var command = conn.CreateCommand();
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = query;
+            command.Parameters.AddWithValue("@teamName", model.teamName);
             command.ExecuteNonQuery();
         }
 
