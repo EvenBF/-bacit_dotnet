@@ -1,4 +1,6 @@
 @model bacit_dotnet.MVC.Models.SuggestionModel
+<link rel="stylesheet" href="~/css/sug.css" asp-append-version="true" />
+
 <h1>
    Forslagsliste
 </h1>
@@ -22,8 +24,13 @@
 
             <form action="/suggestions/Godkjenn" method="post">
 
+
+             @foreach (var user in Model.Sug) {
+            <input type="hidden" name="id" value=@user.sugId> 
+
             
             <input type="hidden" name="id" value=@user.sugId>
+
             <ul> 
                  <li>
                      <label for="Status">Status</label>
@@ -40,5 +47,7 @@
             
             </form>
 
+
     }
     
+
