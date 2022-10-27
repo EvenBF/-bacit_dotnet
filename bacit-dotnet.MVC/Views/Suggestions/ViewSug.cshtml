@@ -15,6 +15,19 @@
             <p>Beskrivelse: @user.Description</p>
             <p>Tid: @user.TimeStamp</p>
             <p>Status: @user.Status</p>
+
+            <form action="/suggestions/Godkjenn" method="post">
+            <input type="hidden" name="id" value=@user.sugId> 
+            <input type="hidden" name="id" value=@user.sugId>
+                 <p>
+                     <label for="Status">Status</label>
+                         <select name=Status id=Status>
+                         <option value="Godkjent">Godkjent</option>
+                         <option value="Ikke Godkjent">Ikke Godkjent</option>
+                        </select>
+            <input type="submit" value="Lagre">
+            </p>
+        </form>
             <a href="/Suggestions/Edit?id=@user.sugId"><button type="button" id="knapp1">Rediger</button></a>
             <a href="/Suggestions/Delete?id=@user.sugId"><button type="button" id="knapp2" button onclick="return confirm('Vil du slette dette forslaget for alltid?');">Slett</button></a>
         </div>
@@ -22,29 +35,5 @@
 </div>
 
 
-            <form action="/suggestions/Godkjenn" method="post">
-
-
-             @foreach (var user in Model.Sug) {
-            <input type="hidden" name="id" value=@user.sugId> 
-
-            
-            <input type="hidden" name="id" value=@user.sugId>
-
-            <ul> 
-                 <li>
-                     <label for="Status">Status</label>
-                         <select name=Status id=Status>
-                         <option value="Godkjent">Godkjent</option>
-                         <option value="Ikke Godkjent">Ikke Godkjent</option>
-                        </select>
-                    </li>
-            </ul>
-
-            <input type="submit" value="Lagre">
-            
-
-    }
-    
-  </form>
+        
 
