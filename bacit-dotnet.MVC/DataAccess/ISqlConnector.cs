@@ -6,6 +6,7 @@ namespace bacit_dotnet.MVC.DataAccess
     public interface ISqlConnector
     {
         IEnumerable<User> GetUsers();
+        IEnumerable<team> GetTeam();
         IEnumerable<Suggestion> FetchSug();
         void SetSuggestionsParam(SuggestionViewModel model);
         IEnumerable<Suggestion> FetSpeSug(int id);

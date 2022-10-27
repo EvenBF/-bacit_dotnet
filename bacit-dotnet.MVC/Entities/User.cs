@@ -18,6 +18,12 @@
         public DateTime TimeStamp { get; set; }
         public string Status { get; set; }
  }
+    public class team
+    {
+        public int teamId { get; set; }
+
+        public string teamName { get; set; }
+    }
 
 
 }
