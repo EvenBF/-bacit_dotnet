@@ -1,7 +1,6 @@
 ﻿using bacit_dotnet.MVC.Entities;
 using bacit_dotnet.MVC.Models.Suggestions;
 using bacit_dotnet.MVC.Models.Teams;
-
 namespace bacit_dotnet.MVC.DataAccess
 {
     public interface ISqlConnector

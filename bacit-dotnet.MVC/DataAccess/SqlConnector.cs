@@ -93,7 +93,7 @@ namespace bacit_dotnet.MVC.DataAccess
 
         private void InsertSuggestions(string query, MySqlConnection conn, SuggestionViewModel model)
         {
-            DateTime date1 = DateTime.Now; 
+            DateTime date1 = DateTime.Now;
             using var command = conn.CreateCommand();
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = query;

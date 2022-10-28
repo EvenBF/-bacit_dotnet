@@ -20,7 +20,7 @@ namespace bacit_dotnet.MVC.Controllers
         {
             var data = sqlConnector.GetTeam();
             var model = new TeamModel();
-            model.Teams = data;
+            model.team = data;
             return View(model);
         }
 
