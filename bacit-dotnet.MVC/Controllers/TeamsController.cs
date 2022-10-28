@@ -26,5 +26,15 @@ namespace bacit_dotnet.MVC.Controllers
             sqlConnector.SetTeamParam(model);
             return View(model);
         }
+        [HttpGet]
+        public IActionResult viewTeam()
+        {
+
+            var data = sqlConnector.GetTeam();
+            var model = new TeamModel();
+            model.team = data;
+            return View(model);
+
+        }
     }
 }
