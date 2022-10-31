@@ -1,30 +1,48 @@
 ﻿@model bacit_dotnet.MVC.Models.TeamModel
+<link rel="stylesheet" href="~/css/sugIndex.css" asp-append-version="true" />
 
 <div class="container">
     <form action="/suggestions/save" method="post">
         <div class="row">
-            <div class="col-25">
+            <div class="col-l">
                 <label for="Title">Tittel</label>
-                <input type="text" required="required" oninvalid="this.setCustomValidity('Vennligst skriv en ordentlig tittel')" oninput="this.setCustomValidity('')"name="Title" />
+            </div>
+            <div class="col-i">
+                <input type="text" required="required" oninvalid="this.setCustomValidity('Vennligst skriv en ordentlig tittel')" oninput="this.setCustomValidity('')" placeholder="Tittel" name="Title" />
             </div>
         </div>
-        <li>
-            <label for="Name">Navn</label>
-            <input type="text" required="required" oninvalid="this.setCustomValidity('Vennligst fyll inn navn :-)')" oninput="this.setCustomValidity('')"name="Name" />
-        </li>
-        <li>
-            <label for="Description">Beskrivelse</label>
-            <input type="text" required="required" oninvalid="this.setCustomValidity('Vennligst beskriv forslaget')" oninput="this.setCustomValidity('')" name="Description" />
-        </li>
-        <li>
-            <label for="Team">Team</label>
-            <select name=Team id=Team>
+        <div class="row">
+            <div class="col-l">
+                <label for="Name">Navn</label>
+            </div>
+            <div class="col-i">
+                <input type="text" required="required" oninvalid="this.setCustomValidity('Vennligst fyll inn navn :-)')" oninput="this.setCustomValidity('')"placeholder="Navn" name="Name" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-l">
+                <label for="Description">Beskrivelse</label>
+            </div>
+            <div class="col-i">
+                <textarea type="text" required="required" oninvalid="this.setCustomValidity('Vennligst beskriv forslaget')" oninput="this.setCustomValidity('')" placeholder="Beskrivelse" name="Description"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-l">
+                <label for="Team">Team</label>
+            </div>
+            <div class="col-i">
+                <select name=Team id=Team>
                 
                     @foreach (var team in Model.team)
                 {
                    <option value="@team.teamId">@team.teamName</option>
                 }
-        </li>
-    <input type="submit" value="Lagre" />
+            </div>
+        </div>
+        <br>
+        <div class="row">
+                <input type="submit" value="Lagre" /> 
+        </div>
     </form> 
 </div>

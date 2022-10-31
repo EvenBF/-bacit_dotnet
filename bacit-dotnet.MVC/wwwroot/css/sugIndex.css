@@ -1,0 +1,41 @@
+h1, h2, h3, p, a, div{
+  font-family: 'Trebuchet MS', sans-serif;
+}
+
+input[type=text], select, textarea {
+  padding: 10px;
+  width: 100%;
+}
+
+label {
+  font-weight: 600;
+}
+
+input[type=submit] {
+  font-weight: 500;
+  font-size: large;
+  color: #303131;
+  background-color: #b9bfc8;
+  border: none;
+  height: 45px;
+  border-radius: 12px;
+  width: 100%;
+  margin-top: 10px; 
+}
+
+input[type=submit]:hover {
+  background-color: #939ca9;
+}
+
+.container {
+  border-radius: 12px;
+  background-color: #f1f1f1;
+  padding: 15px;
+  width: 70%;
+}
+  
+.col-i, .col-l, textarea {
+  float: left;
+  width: 100%;
+  margin-top: 5px;
+}
