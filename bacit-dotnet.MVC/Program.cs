@@ -30,7 +30,7 @@ public class Program
 
         app.UseAuthorization();
 
-        app.MapControllerRoute(name: "default", pattern: "{controller=Suggestions}/{action=ViewSug}/{id?}");
+        app.MapControllerRoute(name: "default", pattern: "{controller=Suggestions}/{action=Login}/{id?}");
         app.MapControllers();   
 
 
