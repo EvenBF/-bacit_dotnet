@@ -1,10 +1,57 @@
 @model bacit_dotnet.MVC.Models.Suggestions.SuggestionViewModel
+<link rel="stylesheet" href="~/css/sugIndex.css" asp-append-version="true" />
 
-<h2> Nylig lagt til forslag </h2> 
-<br>
-<p><b>Tittel: </b>@Model.Title </p>
-<p><b>Navn: </b>@Model.Name </p>
-<p><b>Team: </b>@Model.Team </p>
-<p><b>Beskrivelse av forslaget: </b>@Model.Description</p>
-<p><b>Tidspunkt (GMT): </b>@Model.TimeStamp</p>
+<h1> Nylig lagt til forslag </h1> 
 
+<!--
+<div class="container">
+    <p><b>Tittel: </b>@Model.Title </p>
+    <p><b>Navn: </b>@Model.Name </p>
+    <p><b>Team: </b>@Model.Team </p>
+    <p><b>Beskrivelse av forslaget: </b>@Model.Description</p>
+    <p><b>Tidspunkt (GMT): </b>@Model.TimeStamp</p>
+</div>
+-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-l">
+            <b>Tittel </b>
+        </div>
+        <div class="col-i">
+            @Model.Title 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-l">
+            <br><b>Navn </b>
+        </div>
+        <div class="col-i">
+            @Model.Name 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-l">
+            <br><b>Besksrivelse </b>
+        </div>
+        <div class="col-i">
+            @Model.Description 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-l">
+            <br><b>Team </b>
+        </div>
+        <div class="col-i">
+            @Model.Team 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-l">
+            <br><b>Tidspunkt (GMT) </b>
+        </div>
+        <div class="col-i">
+            @Model.TimeStamp 
+        </div>
+    </div>
+</div>
