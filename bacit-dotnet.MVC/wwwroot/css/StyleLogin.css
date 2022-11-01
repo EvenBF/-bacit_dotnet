@@ -1,0 +1,86 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url(https://cdn.discordapp.com/attachments/1011202525837393932/1035161736430501978/heii.jpg);
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+}
+
+.LoginBox{
+    width: 320px;
+    height: 420px;
+    background: #fff;
+    color: #000;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+.Login{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+
+h1{
+    margin: 0px;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.LoginBox p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.LoginBox input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.LoginBox input[type="text"], input[type="Passord"]{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #000;
+    font-size: 16px;
+} 
+
+.LoginBox input[type="Fortsett"]{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: darkgrey;
+    color: #000;
+    font-size: 18px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.LoginBox input[type="Fortsett"]:hover{
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+}
+
+.LoginBox a{
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: #000;
+}
+
+.LoginBox a:hover{
+    color: #ffc107;
+}
