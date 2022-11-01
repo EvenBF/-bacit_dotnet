@@ -79,5 +79,12 @@ namespace bacit_dotnet.MVC.Controllers
 
             return View("save",model);
         }
+        [HttpGet]
+        
+        public IActionResult Login(SuggestionViewModel model) 
+        {
+            var model2 = new SuggestionModel();
+           return View("Login",model2);
+        }
 }
 }
