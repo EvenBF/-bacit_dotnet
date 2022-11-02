@@ -1,6 +1,5 @@
 #teamHeader {
     text-align: center;
-    margin-left: 5%;
     padding-bottom: 3%;
 }
 
@@ -13,4 +12,5 @@
     background-color: beige;
     padding: 20px;
     text-align: center;
+    width: 100%;
 }
