@@ -1,4 +1,5 @@
-﻿@model bacit_dotnet.MVC.Models.TeamModel
+﻿@model bacit_dotnet.MVC.Models.SuggestionModel
+
 <link rel="stylesheet" href="~/css/sugIndex.css" asp-append-version="true" />
 
 <h1>
@@ -38,7 +39,7 @@
             <div class="col-i">
                 <select name=Team id=Team>
                 
-                    @foreach (var team in Model.team)
+                    @foreach (var team in Model.Teams)
                 {
                    <option value="@team.teamId">@team.teamName</option>
                 }

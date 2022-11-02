@@ -19,8 +19,8 @@ namespace bacit_dotnet.MVC.Controllers
         public IActionResult Index()
         {
             var data = sqlConnector.GetTeam();
-            var model = new TeamModel();
-            model.team = data;
+            var model = new SuggestionModel();
+            model.Teams = data;
             return View(model);
         }
 
