@@ -87,7 +87,7 @@ namespace bacit_dotnet.MVC.DataAccess
         {
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
             connection.Open();
-            var query = "insert into suggestions (Title, UserId, TeamId, Description, TimeStamp) values (@Title, @UserId, @TeamId, @Description, @TimeStamp)";
+            var query = "insert into suggestions (Title, UserId, TeamId, TeamName, Description, TimeStamp) values (@Title, @UserId, @TeamId, @TeamName, @Description, @TimeStamp)";
             InsertSuggestions(query, connection, model);
         }
 
@@ -100,6 +100,7 @@ namespace bacit_dotnet.MVC.DataAccess
             command.Parameters.AddWithValue("@Title", model.Title); 
             command.Parameters.AddWithValue("@UserId", model.Name);
             command.Parameters.AddWithValue("@TeamId", model.Team);
+            command.Parameters.AddWithValue("@TeamName", model.TeamName);
             command.Parameters.AddWithValue("@Description", model.Description);
             command.Parameters.AddWithValue("@TimeStamp", date1);
             command.ExecuteNonQuery();
@@ -110,7 +111,7 @@ namespace bacit_dotnet.MVC.DataAccess
             connection.Open();
 
             var Suggestions = new List<Suggestion>();
-            var reader = ReadData("select sugId, Title, UserId, TeamId, Description, TimeStamp, Status from suggestions", connection);
+            var reader = ReadData("select sugId, Title, UserId, TeamId, TeamName, Description, TimeStamp, Status from suggestions", connection);
             while (reader.Read())
             {
                 var user = new Suggestion();
@@ -118,6 +119,7 @@ namespace bacit_dotnet.MVC.DataAccess
                 user.Title = reader.GetString("Title");
                 user.Name = reader.GetString("UserId");
                 user.Team = reader.GetInt32("TeamId");
+                user.TeamName = reader.GetString("TeamName");
                 user.Description = reader.GetString("Description");
                 user.TimeStamp = reader.GetDateTime("TimeStamp");
                 user.Status = reader.GetString("Status");
@@ -132,7 +134,7 @@ namespace bacit_dotnet.MVC.DataAccess
             connection.Open();
 
             var Suggestions = new List<Suggestion>();
-            var reader = ReadSpeData("select sugId, Title, UserId, TeamId, Description from suggestions where sugId = @id", connection, id);
+            var reader = ReadSpeData("select sugId, Title, UserId, TeamId, TeamName, Description from suggestions where sugId = @id", connection, id);
             while (reader.Read())
             {
                 var user = new Suggestion();
@@ -140,6 +142,7 @@ namespace bacit_dotnet.MVC.DataAccess
                 user.Title = reader.GetString("Title");
                 user.Name = reader.GetString("UserId");
                 user.Team = reader.GetInt32("TeamId");
+                user.TeamName = reader.GetString("TeamName");
                 user.Description = reader.GetString("Description");
                 Suggestions.Add(user);
             }
@@ -152,7 +155,7 @@ namespace bacit_dotnet.MVC.DataAccess
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
             connection.Open();
             
-            var query = "update suggestions set title=@Title,userid=@Name,teamId = @Team,description=@Description, Status = @Status where sugId =  @id;";
+            var query = "update suggestions set title=@Title,userid=@Name,teamId = @Team, teamName=@TeamName, description=@Description, Status = @Status where sugId =  @id;";
             UpdateSuggestions(query, connection, model, id);
             
         }
@@ -167,6 +170,7 @@ namespace bacit_dotnet.MVC.DataAccess
             command.Parameters.AddWithValue("@Title", user.Title); 
             command.Parameters.AddWithValue("@Name", user.Name);
             command.Parameters.AddWithValue("@Team", user.Team);
+            command.Parameters.AddWithValue("@TeamName", user.TeamName);  
             command.Parameters.AddWithValue("@Description", user.Description);
             command.Parameters.AddWithValue("@Status", user.Status);
             command.Parameters.AddWithValue("@id", id);

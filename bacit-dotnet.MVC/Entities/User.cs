@@ -14,6 +14,7 @@
         public string Title { get; set; }
         public string Name { get; set; }
         public int Team { get; set; }
+        public string TeamName{ get; set; }
         public string Description { get; set; }
         public DateTime TimeStamp { get; set; }
         public string Status { get; set; }
