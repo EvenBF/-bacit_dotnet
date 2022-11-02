@@ -1,4 +1,4 @@
-#teamHeader {
+/*#teamHeader {
     text-align: center;
     padding-bottom: 3%;
 }
@@ -13,4 +13,31 @@
     padding: 20px;
     text-align: center;
     width: 100%;
-}
+} */
+
+
+h1, h2, h3, p, a, div{
+    font-family: 'Trebuchet MS', sans-serif;
+  }
+  
+  h1 {
+    text-align: center;
+    margin: 40px;
+  }
+
+  
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+  }
+  
+  .flex-container > div {
+    background-color: #f1f1f1;
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 12px;
+  }
