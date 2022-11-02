@@ -1,16 +1,18 @@
 @model bacit_dotnet.MVC.Models.SuggestionModel
 
+<link rel="stylesheet" href="~/css/viewTeam.css" asp-append-version="true" />
+
+
 <h1>
-    Teamliste
+    Teams
 </h1>
+
 <ul>
+<div class="flex-container">
     @foreach (var team in Model.Teams) 
     {
-        <li>
-            <div>
-                <h3>@team.teamName</h3>
-            </div>
-        </li>
+        <div>
+            <h3>@team.teamName</h3>
+        </div>
     }
-
-</ul>
+</div>

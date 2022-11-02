@@ -48,27 +48,32 @@ namespace bacit_dotnet.MVC.Controllers
 
             dynamic mymodel = new SuggestionModel();
             mymodel.Sug = sqlConnector.FetSpeSug(id);
-            mymodel.Teams = sqlConnector.GetTeam();
-            return View(mymodel);
+            dynamic mymodel2 = new TeamModel();
+            mymodel2.team = sqlConnector.GetTeam();
+            return View(mymodel, mymodel2);
         }
 
         [HttpPost]
         public IActionResult EditSave(SuggestionViewModel model, int id)
         {
             sqlConnector.UpdateValueSetSug(model, id);
-            return View("Save",model);
+            var data = sqlConnector.FetchSug();
+            var model2 = new SuggestionModel();
+            model2.Sug = data;
+            
+            return View("ViewSug",model2);
         }
 
         [HttpGet]
         public IActionResult Delete(SuggestionViewModel model, int id)
         {
 
-            var data = sqlConnector.FetSpeSug(id);
+            sqlConnector.DeleteValueSetSug(model, id);
+            var data = sqlConnector.FetchSug();
             var model2 = new SuggestionModel();
             model2.Sug = data;
-
-            sqlConnector.DeleteValueSetSug(model, id);
-            return View("Save", model);
+            
+            return View("ViewSug", model2);
         }
 
          [HttpPost]
@@ -76,8 +81,11 @@ namespace bacit_dotnet.MVC.Controllers
         {
 
             sqlConnector.UpdateValueSetGodkjenn(model, id);
+            var data = sqlConnector.FetchSug();
+            var model2 = new SuggestionModel();
+            model2.Sug = data;
 
-            return View("save",model);
+            return View("ViewSug",model2);
         }
         [HttpGet]
         
