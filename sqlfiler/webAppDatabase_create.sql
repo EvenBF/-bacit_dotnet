@@ -3,14 +3,15 @@ USE webAppDatabase;
 drop table teamUser;
 drop table suggestions;
 drop table users;
-drop table teamleader;
+drop table teamLeader;
 drop table administrator;
 drop table subTeam;
 drop table team;
 
 CREATE TABLE users (
     userId INT auto_increment PRIMARY KEY,
-    name VARCHAR(20) NOT NULL,
+    firstname VARCHAR(20) NOT NULL,
+    lastname VARCHAR(20) NOT NULL,
     email VARCHAR(30) NOT NULL,
     phone VARCHAR(12) NOT NULL
 );
@@ -26,15 +27,16 @@ CREATE TABLE suggestions (
     teamId INT NOT NULL DEFAULT 1,
     description varchar(500) NOT NULL,
     timeAdded TIMESTAMP,
-    userId varchar(20) NOT NULL,
-    /*CONSTRAINT userFK
+    userId INT,
+    CONSTRAINT userFK
     FOREIGN KEY (userId) REFERENCES users(userId),
     CONSTRAINT teamFK
-    FOREIGN KEY (teamId) REFERENCES team(teamId)*/
+    FOREIGN KEY (teamId) REFERENCES team(teamId)
 );
 
 CREATE TABLE teamUser (
     teamId INT,
+    subTeamId INT,
     userId INT, 
     timeAdded TIMESTAMP,
     CONSTRAINT teamUserPK
@@ -42,7 +44,9 @@ CREATE TABLE teamUser (
     CONSTRAINT userTeamFK
     FOREIGN KEY (userId) REFERENCES users(userId),
     CONSTRAINT teamUserFK
-    FOREIGN KEY (teamId) REFERENCES team(teamId)
+    FOREIGN KEY (teamId) REFERENCES team(teamId),
+    CONSTRAINT subFK 
+    FOREIGN KEY (subTeamId) REFERENCES subTeam(subTeamId)
 );
 
 CREATE TABLE subTeam (
@@ -53,7 +57,7 @@ CREATE TABLE subTeam (
     FOREIGN KEY (teamId) REFERENCES team(teamId)
 );
 
-CREATE TABLE teamleader (
+CREATE TABLE teamLeader (
     leaderId INT auto_increment PRIMARY KEY,
     userId INT,
     CONSTRAINT userLeaderFK 

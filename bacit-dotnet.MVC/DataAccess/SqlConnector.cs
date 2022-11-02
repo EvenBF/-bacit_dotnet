@@ -116,7 +116,7 @@ namespace bacit_dotnet.MVC.DataAccess
                 var user = new Suggestion();
                 user.sugId = reader.GetInt32("sugId");
                 user.Title = reader.GetString("Title");
-                user.Name = reader.GetString("UserId");
+                user.Name = reader.GetInt32("UserId");
                 user.Team = reader.GetInt32("TeamId");
                 user.Description = reader.GetString("Description");
                 user.TimeStamp = reader.GetDateTime("TimeStamp");
@@ -138,7 +138,7 @@ namespace bacit_dotnet.MVC.DataAccess
                 var user = new Suggestion();
                 user.sugId = reader.GetInt32("sugId");
                 user.Title = reader.GetString("Title");
-                user.Name = reader.GetString("UserId");
+                user.Name = reader.GetInt32("UserId");
                 user.Team = reader.GetInt32("TeamId");
                 user.Description = reader.GetString("Description");
                 Suggestions.Add(user);
