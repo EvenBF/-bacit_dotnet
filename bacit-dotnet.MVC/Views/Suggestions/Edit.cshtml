@@ -1,4 +1,5 @@
 @model bacit_dotnet.MVC.Models.SuggestionModel
+
 <form action="/suggestions/EditSave" method="post">
     @foreach (var user in @Model.Sug)
     {
@@ -18,16 +19,16 @@
         </li>
         <li>
             <label for="Team">Team</label>
-                    @foreach (var team in Model.Teams)
+            <select name=Team id=Team>
+                    @*foreach (var team in @model.team)
                 {
                    <option value="@team.teamId">@team.teamName</option>
-                }
+                }*@
+            </select>
         </li>
         <li>
-            <label for="Status">Status</label>
+            <label for="Status">PDSA</label>
             <select name=Status id=Status>
-                <option value="Godkjent">Godkjent</option>
-                <option value="Ikke Godkjent">Ikke Godkjent</option>
                 <option value="Plan">Plan</option>
                 <option value="Do">Do</option>
                 <option value="Study">Study</option>
@@ -37,4 +38,5 @@
     </ul>
     <input type="submit" value="Lagre" />        
     }
-</form>
+
+</form> 
