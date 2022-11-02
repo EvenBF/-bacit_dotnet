@@ -1,17 +1,15 @@
 @model bacit_dotnet.MVC.Models.TeamModel
 <link rel="stylesheet" href="~/css/viewTeam.css" asp-append-version="true" />
 
-<h1 id="teamHeader">
-    Teamliste
+<h1>
+    Teams
 </h1>
-<ul id="teamUl">
+
+<div class="flex-container">
     @foreach (var team in Model.team) 
     {
-        <li>
-            <div>
-                <h3 class="teamLi">@team.teamName</h3>
-            </div>
-        </li>
+        <div>
+            <h3>@team.teamName</h3>
+        </div>
     }
-
-</ul>
+</div>

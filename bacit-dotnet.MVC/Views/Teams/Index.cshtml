@@ -1,9 +1,31 @@
-<form action="/Teams/Save" method="post">
-    <ul>
-        <li>
-            <label for="teamName">Teamnavn</label>
-            <input name="teamName" type="text" required="required" oninvalid="this.setCustomValidity('skriv et ordentlig teamnavn')" />
-        </li>
-    </ul>
-    <input type="submit" value="Lagre" />
-</form>
+<link rel="stylesheet" href="~/css/sugIndex.css" asp-append-version="true" />
+
+<h1>
+   Teamregistrering
+</h1>
+
+<div class="container">
+    <form action="/Teams/Save" method="post">
+        <div class="row">
+            <div class="col-l">
+                <label for="teamName">Teamnavn</label>
+            </div>
+            <div class="col-i">
+                    <input name="teamName" type="text" required="required" oninvalid="this.setCustomValidity('skriv et ordentlig teamnavn')" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-l">
+                <label for="Teamleader">Teamleder</label>
+            </div>
+            <div class="col-i">
+                <select name=Teamleader id=Team>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+                <input type="submit" value="Lagre" /> 
+        </div>
+    </form>
+</div>
