@@ -11,10 +11,10 @@
                 <h1>Login Here</h1>
                 <form>
                     <p>Brukernavn</p>
-                    <input type="text" name="" placeholder="Skriv Brukernavn Her" required="required">
+                    <input type="text" name="" placeholder="Skriv Brukernavn Her" required="required" oninvalid="this.setCustomValidity('Fyll inn Brukernavn')" oninput="this.setCustomValidity('')">
                     <p>Passord</p>
-                    <input type="Passord" name="" placeholder="Skriv Passord Her" required="required">
-                    <input type="Fortsett" value="Login" onclick="location.href = 'Suggestions/ViewSug';">
+                    <input type="Password" name="" placeholder="Skriv Passord Her" required="required" oninvalid="this.setCustomValidity('Fyll inn Passord')" oninput="this.setCustomValidity('')">
+                    <input type="Continue" value="Login" onclick="location.href = 'Suggestions/ViewSug';">
                     <a href="#">Glemt Passord?</a><br>
                     <a href="#">Registrer Ny Bruker</a>                 
                     </form>

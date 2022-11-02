@@ -1,23 +1,44 @@
-﻿<form  asp-action="save" asp-controller="users" method="post">
-    <ul>
-        <li>
-            <label for="Title">Navn</label>
-            <input type="text" name="Name" />
-        </li>
-        <li>
-            <label for="Name">Passord</label>
-            <input type="password" name="Password" />
-        </li>
-        <li>
-            <label for="Team">Email</label>
-            <input type="email" name="Email" />
-        </li>
-        <li>
-            <label for="TimeStamp">Role</label>
-            <input type="Text" name="Role" />
-        </li>
-        <li>
-            <input type="submit" value="Lagre" />
-        </li>
-    </ul>
-</form> 
+﻿@model bacit_dotnet.MVC.Models.Suggestions.SuggestionViewModel
+<link rel="stylesheet" href="~/css/sugIndex.css" asp-append-version="true" />
+
+<h1>AnssattRegistrering</h1>
+
+<div class="container">
+    <form action="/suggestions/save" method="post">
+        <div class="row">
+            <div class="col-l">
+                <label for="Name">Navn</label>
+            </div>
+            <div class="col-i">
+                <input type="text" required="required" oninvalid="this.setCustomValidity('Obligatorisk')" oninput="this.setCustomValidity('')" placeholder="Navn" name="Name" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-l">
+                <label for="Password">Passord</label>
+            </div>
+            <div class="col-i">
+                <input type="Password" required="required" oninvalid="this.setCustomValidity('Obligatorisk')" oninput="this.setCustomValidity('')"placeholder="Passord" name="Password" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-l">
+                <label for="Role">Rolle</label>
+            </div>
+            <div class="col-i">
+                <textarea type="text" required="required" oninvalid="this.setCustomValidity('Obligatorisk')" oninput="this.setCustomValidity('')" placeholder="Rolle" name="Role"></textarea>
+            </div>
+            <div class="row">
+            <div class="col-l">
+                <label for="Email">Email</label>
+            </div>
+            <div class="col-i">
+                <textarea type="text" required="required" oninvalid="this.setCustomValidity('Obligatorisk')" oninput="this.setCustomValidity('')" placeholder="Email" name="Email"></textarea>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+                <input type="submit" value="Lagre" /> 
+        </div>
+    </form> 
+</div>
