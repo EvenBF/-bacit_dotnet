@@ -108,7 +108,6 @@ namespace bacit_dotnet.MVC.DataAccess
         public  IEnumerable<Suggestion> FetchSug() {
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
             connection.Open();
-
             var Suggestions = new List<Suggestion>();
             var reader = ReadData("select sugId, Title, UserId, TeamId, Description, TimeStamp, Status from suggestions", connection);
             while (reader.Read())
@@ -117,13 +116,22 @@ namespace bacit_dotnet.MVC.DataAccess
                 user.sugId = reader.GetInt32("sugId");
                 user.Title = reader.GetString("Title");
                 user.Name = reader.GetString("UserId");
-                user.Team = reader.GetInt32("TeamId");
                 user.Description = reader.GetString("Description");
                 user.TimeStamp = reader.GetDateTime("TimeStamp");
                 user.Status = reader.GetString("Status");
                 Suggestions.Add(user);
             }
             connection.Close();
+            using var connection2 = new MySqlConnection(config.GetConnectionString("MariaDb"));
+            connection2.Open();
+            var readerT = ReadData("select * from team", connection2);
+            int indexT = 0;
+            while (readerT.Read()) {
+                if(indexT <= Suggestions.Count()){
+                    Suggestions[indexT].Team = readerT.GetString("teamName");
+                }
+                indexT += 1;
+            }
             return Suggestions;
         }
 
@@ -139,7 +147,7 @@ namespace bacit_dotnet.MVC.DataAccess
                 user.sugId = reader.GetInt32("sugId");
                 user.Title = reader.GetString("Title");
                 user.Name = reader.GetString("UserId");
-                user.Team = reader.GetInt32("TeamId");
+                user.teamId = reader.GetInt32("TeamId");
                 user.Description = reader.GetString("Description");
                 Suggestions.Add(user);
             }
