@@ -1,0 +1,16 @@
+#teamHeader {
+    text-align: center;
+    padding-bottom: 3%;
+}
+
+#teamUl {
+    list-style-type: disclosure-closed;
+}
+
+.teamLi {
+    color: black;
+    background-color: beige;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
