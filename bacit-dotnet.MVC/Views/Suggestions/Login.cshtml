@@ -2,23 +2,27 @@
 
 <html>
     <head>
-        <title>
-            Login Form Design
-        </title>
-            <link rel="stylesheet" href="~/css/StyleLogin.css" asp-append-version="true" />      
-        <body>
-            <div class="LoginBox">
-                <h1>Login Her</h1>
-                <form>
-                    <p>Brukernavn</p>
-                    <input type="text" name="" placeholder="Skriv Brukernavn Her" required="required" oninvalid="this.setCustomValidity('Fyll inn Brukernavn')" oninput="this.setCustomValidity('')">
-                    <p>Passord</p>
-                    <input type="Password" name="" placeholder="Skriv Passord Her" required="required" oninvalid="this.setCustomValidity('Fyll inn Passord')" oninput="this.setCustomValidity('')">
-                    <input type="Continue" value="Login" onclick="location.href = 'Suggestions/ViewSug';">
-                    <a href="#">Glemt Passord?</a><br>
-                    <a href="#">Registrer Ny Bruker</a>                 
-                    </form>
-            </div>
-        </body>
+        <meta charset="utf-8">
+        <title>Input From UI Design</title>
+        <link rel="stylesheet" href="~/css/StyleLogin.css" asp-append-version="true" />      
     </head>
- </html>
+<html>    
+    <body>
+        <div class="box">
+            <h2>Login</h2>
+            <form>
+                <div class="inputBox">
+                    <input type="text" name="" required="">
+                    <label>Brukernavn</label>
+                </div>
+                <div class="inputBox">
+                    <input type="password" name="" required="">
+                    <label>Passord</label>
+                </div>
+                <input type="submit" name="" value="Login" onclick="location.href = 'Suggestions/ViewSug';">
+            </form>
+        </div>
+    </body>
+</html>
+
+        
