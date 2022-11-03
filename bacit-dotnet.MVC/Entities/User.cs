@@ -25,4 +25,9 @@
 
         public string teamName { get; set; }
     }
+
+    public class status
+    {
+        public string name { get; set; }
+    }
 }

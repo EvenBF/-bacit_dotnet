@@ -236,5 +236,24 @@ namespace bacit_dotnet.MVC.DataAccess
             connection.Close();
             return users;
         }
+
+        public IEnumerable<status> GetStatus()
+        {
+
+            using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
+            connection.Open();
+
+            var reader = ReadData("SELECT name from status;", connection);
+
+            var users = new List<status>();
+            while (reader.Read())
+            {
+                var status = new status();
+                status.name = reader.GetString("name");
+                users.Add(status);
+            }
+            connection.Close();
+            return users;
+        }
     }
 }

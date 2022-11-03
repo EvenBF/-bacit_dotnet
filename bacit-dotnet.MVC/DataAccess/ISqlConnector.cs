@@ -7,6 +7,7 @@ namespace bacit_dotnet.MVC.DataAccess
     {
         IEnumerable<User> GetUsers();
         IEnumerable<team> GetTeam();
+        IEnumerable<status>GetStatus();
         IEnumerable<Suggestion> FetchSug();
         void SetSuggestionsParam(SuggestionViewModel model);
         IEnumerable<Suggestion> FetSpeSug(int id);

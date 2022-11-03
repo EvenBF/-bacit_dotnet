@@ -28,12 +28,13 @@
         </li>
         <li>
             <label for="Status">PDSA</label>
-            <select name=Status id=Status>
-                <option value="Plan">Plan</option>
-                <option value="Do">Do</option>
-                <option value="Study">Study</option>
-                <option value="Act">Act</option>
-            </select>
+               <select name=Status id=Status>
+                        
+                           @foreach (var status in Model.Status)
+                        {
+                        <option value="@status.name">@status.name</option>
+                        }
+                </select>
         </li>
     </ul>
     <input type="submit" value="Lagre" />        

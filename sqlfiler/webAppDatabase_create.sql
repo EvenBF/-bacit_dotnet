@@ -1,4 +1,7 @@
 USE webAppDatabase;
+alter database webAppDatabase character set utf8 collate utf8_general_ci;
+set names utf8;
+alter database webAppDatabase character set utf8;
 
 drop table teamUser;
 drop table suggestions;
@@ -28,17 +31,25 @@ CREATE TABLE suggestions (
     description varchar(500) NOT NULL,
     timeAdded TIMESTAMP,
     userId INT,
+    statusId INT,
+    Status varchar(30) , 
     CONSTRAINT userFK
     FOREIGN KEY (userId) REFERENCES users(userId),
     CONSTRAINT teamFK
-    FOREIGN KEY (teamId) REFERENCES team(teamId)
+    FOREIGN KEY (teamId) REFERENCES team(teamId),
+    CONSTRAINT statusId
+    FOREIGN KEY (statusId) REFERENCES status(statusId)
+);
+
+CREATE TABLE status(
+    name varchar(20) DEFAULT "Pending"  primary key
 );
 
 CREATE TABLE teamUser (
     teamId INT,
     subTeamId INT,
     userId INT, 
-    timeAdded TIMESTAMP,
+    TimeStamp TIMESTAMP,
     CONSTRAINT teamUserPK
     PRIMARY KEY (teamId, userId),
     CONSTRAINT userTeamFK
@@ -70,6 +81,3 @@ CREATE TABLE administrator (
     CONSTRAINT userAdminFK 
     FOREIGN KEY (userId) REFERENCES users(userId)
 );
-
-ALTER table Suggestions Rename column timeAdded TO TimeStamp;
-ALTER TABLE Suggestions ADD Status varchar(30) DEFAULT "Pending";
