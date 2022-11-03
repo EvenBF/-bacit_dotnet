@@ -109,29 +109,20 @@ namespace bacit_dotnet.MVC.DataAccess
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
             connection.Open();
             var Suggestions = new List<Suggestion>();
-            var reader = ReadData("select sugId, Title, UserId, TeamId, Description, TimeStamp, Status from suggestions", connection);
+            var reader = ReadData("select * from  suggestions inner join team on  suggestions.teamId = team.teamId;", connection);
             while (reader.Read())
             {
                 var user = new Suggestion();
                 user.sugId = reader.GetInt32("sugId");
                 user.Title = reader.GetString("Title");
                 user.Name = reader.GetString("UserId");
+                user.Team = reader.GetString("teamName");
                 user.Description = reader.GetString("Description");
                 user.TimeStamp = reader.GetDateTime("TimeStamp");
                 user.Status = reader.GetString("Status");
                 Suggestions.Add(user);
             }
             connection.Close();
-            using var connection2 = new MySqlConnection(config.GetConnectionString("MariaDb"));
-            connection2.Open();
-            var readerT = ReadData("select * from team", connection2);
-            int indexT = 0;
-            while (readerT.Read()) {
-                if(indexT <= Suggestions.Count()){
-                    Suggestions[indexT].Team = readerT.GetString("teamName");
-                }
-                indexT += 1;
-            }
             return Suggestions;
         }
 
