@@ -50,6 +50,7 @@ namespace bacit_dotnet.MVC.Controllers
             dynamic mymodel = new SuggestionModel();
             mymodel.Sug = sqlConnector.FetSpeSug(id);
             mymodel.Teams = sqlConnector.GetTeam();
+            mymodel.Status = sqlConnector.GetStatus();
             return View(mymodel);
         }
 

@@ -15,6 +15,9 @@ namespace bacit_dotnet.MVC.Models
         public IEnumerable<team> Teams {
             get; set;
         }
+         public IEnumerable<status> Status {
+            get; set; 
+        }
     }
 
     public class TeamModel
