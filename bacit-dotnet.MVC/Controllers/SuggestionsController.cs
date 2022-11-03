@@ -18,9 +18,10 @@ namespace bacit_dotnet.MVC.Controllers
 
         public IActionResult Index()
         {
+
             var data = sqlConnector.GetTeam();
-            var model = new TeamModel();
-            model.team = data;
+            var model = new SuggestionModel();
+            model.Teams = data;
             return View(model);
         }
 
@@ -48,9 +49,8 @@ namespace bacit_dotnet.MVC.Controllers
 
             dynamic mymodel = new SuggestionModel();
             mymodel.Sug = sqlConnector.FetSpeSug(id);
-            dynamic mymodel2 = new TeamModel();
-            mymodel2.team = sqlConnector.GetTeam();
-            return View(mymodel, mymodel2);
+            mymodel.Teams = sqlConnector.GetTeam();
+            return View(mymodel);
         }
 
         [HttpPost]

@@ -20,18 +20,20 @@
         <li>
             <label for="Team">Team</label>
             <select name=Team id=Team>
-                    @*foreach (var team in @model.team)
+                    @foreach (var team in Model.Teams)
                 {
                    <option value="@team.teamId">@team.teamName</option>
-                }*@
+                }
             </select>
         </li>
         <li>
-            <label for="Status">PDSA</label>
+            <label for="Status">Status</label>
             <select name=Status id=Status>
+                <option value="Godkjent">Godkjent</option>
+                <option value="Ikke Godkjent">Ikke Godkjent</option>
                 <option value="Plan">Plan</option>
                 <option value="Do">Do</option>
-                <option value="Study">Study</option>
+                <option value="Stduy">Stduy</option>
                 <option value="Act">Act</option>
             </select>
         </li>
@@ -39,4 +41,4 @@
     <input type="submit" value="Lagre" />        
     }
 
-</form> 
+</form>
