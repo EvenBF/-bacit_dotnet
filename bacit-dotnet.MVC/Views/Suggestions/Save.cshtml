@@ -6,7 +6,7 @@
 <!--
 <div class="container">
     <p><b>Tittel: </b>@Model.Title </p>
-    <p><b>Navn: </b>@Model.Name </p>
+    <p><b>Navn: </b>@Model.fName </p>
     <p><b>Team: </b>@Model.Team </p>
     <p><b>Beskrivelse av forslaget: </b>@Model.Description</p>
     <p><b>Tidspunkt (GMT): </b>@Model.TimeStamp</p>
@@ -24,15 +24,23 @@
     </div>
     <div class="row">
         <div class="col-l">
-            <br><b>Navn </b>
+            <br><b>Fornavn </b>
         </div>
         <div class="col-i">
-            @Model.Name 
+            @Model.fName 
+        </div>
+    </div>
+        <div class="row">
+        <div class="col-l">
+            <br><b>Etternavn </b>
+        </div>
+        <div class="col-i">
+            @Model.lName 
         </div>
     </div>
     <div class="row">
         <div class="col-l">
-            <br><b>Besksrivelse </b>
+            <br><b>Beskrivelse </b>
         </div>
         <div class="col-i">
             @Model.Description 
