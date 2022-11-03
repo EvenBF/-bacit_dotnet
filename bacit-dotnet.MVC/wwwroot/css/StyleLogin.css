@@ -1,86 +1,81 @@
-body{
+body {
     margin: 0;
     padding: 0;
-    background-image: url(https://cdn.discordapp.com/attachments/1011202525837393932/1035161736430501978/heii.jpg);
-    background-size: cover;
-    background-position: center;
     font-family: sans-serif;
+    background: url(https://cdn.discordapp.com/attachments/1011202525837393932/1035161736430501978/heii.jpg);
+    background-size: cover;
 }
 
-.LoginBox{
-    width: 320px;
-    height: 420px;
-    background: #fff;
-    color: #000;
+.box {
+    position: absolute;
     top: 50%;
     left: 50%;
-    position: absolute;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 40px;
+    background: rgba(0,0,0,.8);
     box-sizing: border-box;
-    padding: 70px 30px;
+    box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    border-radius: 10px;
 }
 
-.Login{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    position: absolute;
-    top: -50px;
-    left: calc(50% - 50px);
-}
-
-h1{
-    margin: 0px;
-    padding: 0 0 20px;
-    text-align: center;
-    font-size: 22px;
-}
-
-.LoginBox p{
-    margin: 0;
+.box h2 {
+    margin: 0 0 30px;
     padding: 0;
-    font-weight: bold;
+    color: #fff;
+    color: darkseagreen;
+    text-align: center;
 }
 
-.LoginBox input{
+.box .inputBox {
+    position: relative;
+}
+
+.box .inputBox input {
     width: 100%;
-    margin-bottom: 20px;
-}
-
-.LoginBox input[type="text"], input[type="Passord"]{
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
     border: none;
     border-bottom: 1px solid #fff;
+    outline: none;
     background: transparent;
-    outline: none;
-    height: 40px;
-    color: #000;
-    font-size: 16px;
-} 
-
-.LoginBox input[type="Fortsett"]{
-    border: none;
-    outline: none;
-    height: 40px;
-    background: darkgrey;
-    color: #000;
-    font-size: 18px;
-    border-radius: 20px;
-    text-align: center;
 }
 
-.LoginBox input[type="Fortsett"]:hover{
+.box .inputBox label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s; 
+}
+
+.box .inputBox input:focus ~ label,
+.box .inputBox input:valid ~ label 
+{
+    top: -20px;
+    left: 0;
+    color: #03a9f4;
+    font-size: 12px;
+}
+
+.box input[type="submit"] {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #03a9f4;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.box input[type="submit"]:hover {
     cursor: pointer;
     background: #ffc107;
     color: #000;
-}
-
-.LoginBox a{
-    text-decoration: none;
-    font-size: 12px;
-    line-height: 20px;
-    color: #000;
-}
-
-.LoginBox a:hover{
-    color: #ffc107;
 }
