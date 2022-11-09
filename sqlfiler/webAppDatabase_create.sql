@@ -24,26 +24,27 @@ CREATE TABLE team (
     teamName VARCHAR(20) NOT NULL
 );
 
+CREATE TABLE status(
+    statusName varchar(20) DEFAULT "Pending"  primary key
+);
+
 CREATE TABLE suggestions (
     sugId int auto_increment primary key,
     title varchar(20) NOT NULL,
     teamId INT NOT NULL DEFAULT 1,
     description varchar(500) NOT NULL,
-    timeAdded TIMESTAMP,
+    TimeStamp TIMESTAMP,
     userId INT,
-    statusId INT,
-    Status varchar(30) , 
+    statusName varchar(20),
     CONSTRAINT userFK
     FOREIGN KEY (userId) REFERENCES users(userId),
     CONSTRAINT teamFK
     FOREIGN KEY (teamId) REFERENCES team(teamId),
-    CONSTRAINT statusId
-    FOREIGN KEY (statusId) REFERENCES status(statusId)
+    CONSTRAINT statusName
+    FOREIGN KEY (statusName) REFERENCES status(statusName)
 );
 
-CREATE TABLE status(
-    name varchar(20) DEFAULT "Pending"  primary key
-);
+
 
 CREATE TABLE teamUser (
     teamId INT,
