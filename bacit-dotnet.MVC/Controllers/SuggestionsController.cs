@@ -58,11 +58,14 @@ namespace bacit_dotnet.MVC.Controllers
         public IActionResult EditSave(SuggestionViewModel model, int id)
         {
             sqlConnector.UpdateValueSetSug(model, id);
-            var data = sqlConnector.FetchSug();
-            var model2 = new SuggestionModel();
-            model2.Sug = data;
+
+
+            dynamic mymodel = new SuggestionModel();
+            mymodel.Sug = sqlConnector.FetchSug();
+            mymodel.Status = sqlConnector.GetStatus();
+            return View("ViewSug", mymodel);
             
-            return View("ViewSug",model2);
+    
         }
 
         [HttpGet]

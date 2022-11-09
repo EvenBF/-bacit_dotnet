@@ -119,7 +119,7 @@ namespace bacit_dotnet.MVC.DataAccess
                 user.Team = reader.GetString("teamName");
                 user.Description = reader.GetString("Description");
                 user.TimeStamp = reader.GetDateTime("TimeStamp");
-                user.Status = reader.GetString("Status");
+                user.Status = reader.GetString("statusName");
                 Suggestions.Add(user);
             }
             connection.Close();
@@ -151,7 +151,7 @@ namespace bacit_dotnet.MVC.DataAccess
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
             connection.Open();
             
-            var query = "update suggestions set title=@Title,userid=@Name,teamId = @Team,description=@Description, Status = @Status where sugId =  @id;";
+            var query = "update suggestions set title=@Title,userid=@Name,teamId = @Team,description=@Description, statusName=@Status where sugId =  @id;";
             UpdateSuggestions(query, connection, model, id);
             
         }
@@ -202,7 +202,7 @@ namespace bacit_dotnet.MVC.DataAccess
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
             connection.Open();
         
-            string query = "update suggestions set Status = @Status where sugId =  @id;";
+            string query = "update suggestions set Status = @statusName where sugId =  @id;";
             UpdateGodkjenn(query, connection, model, id);
             
         }
@@ -212,7 +212,7 @@ namespace bacit_dotnet.MVC.DataAccess
             using var command = conn.CreateCommand();
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = query;
-            command.Parameters.AddWithValue("@Status", user.Status);
+            command.Parameters.AddWithValue("@statusName", user.Status);
             command.Parameters.AddWithValue("@id", id);
 
             command.ExecuteNonQuery();
@@ -243,13 +243,13 @@ namespace bacit_dotnet.MVC.DataAccess
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
             connection.Open();
 
-            var reader = ReadData("SELECT name from status;", connection);
+            var reader = ReadData("SELECT statusName from status;", connection);
 
             var users = new List<status>();
             while (reader.Read())
             {
                 var status = new status();
-                status.name = reader.GetString("name");
+                status.name = reader.GetString("statusName");
                 users.Add(status);
             }
             connection.Close();

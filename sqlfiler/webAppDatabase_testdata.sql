@@ -90,7 +90,7 @@ select * from subTeam;
 
 delete from suggestions;
 
-insert into suggestions (title, description, userId, status)
+insert into suggestions (title, description, userId, statusName)
 values
 ('Vask opp', 'Dere må vaske opp i kantina', '3', 'Pending'),
 ('Kost gulvet', 'Dere må koste gulvet i møterom 1', '2', 'Act'),
@@ -138,7 +138,7 @@ select * from teamUser;
 
 delete from status;
 
-insert into status (name)
+insert into status (statusName)
 values 
 ('Pending'), 
 ('Plan'), 
