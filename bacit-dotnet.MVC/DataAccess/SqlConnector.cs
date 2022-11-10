@@ -88,7 +88,8 @@ namespace bacit_dotnet.MVC.DataAccess
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
             connection.Open();
             var query = "insert into suggestions (Title, UserId, TeamId, Description, TimeStamp) values (@Title, @UserId, @TeamId, @Description, @TimeStamp)";
-            InsertSuggestions(query, connection, model);
+            var query2 = "update suggestions set userId = (select userId from users where users.firstname=@fName and users.lastname=@lName) where title=@title;"; //oppdaterer userId etter matchende fornavn, etternavn og title
+            InsertSuggestions(query, query2, connection, model);
         }
 
         private void InsertSuggestions(string query, MySqlConnection conn, SuggestionViewModel model)
