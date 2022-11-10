@@ -12,7 +12,8 @@
     {
         public int sugId { get; set; }
         public string Title { get; set; }
-        public int Name { get; set; }
+        public string fName { get; set; }
+        public string lName {get; set;}
         public string Team { get; set; }
         public int teamId { get; set;}
         public string Description { get; set; }
