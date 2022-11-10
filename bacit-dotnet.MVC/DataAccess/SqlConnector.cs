@@ -92,18 +92,25 @@ namespace bacit_dotnet.MVC.DataAccess
             InsertSuggestions(query, query2, connection, model);
         }
 
-        private void InsertSuggestions(string query, MySqlConnection conn, SuggestionViewModel model)
+        private void InsertSuggestions(string query, string query2, MySqlConnection conn, SuggestionViewModel model)
         {
             DateTime date1 = DateTime.Now;
             using var command = conn.CreateCommand();
-            command.CommandType = System.Data.CommandType.Text;
+            command.CommandType = System.Data.CommandType.Text; 
             command.CommandText = query;
             command.Parameters.AddWithValue("@Title", model.Title); 
-            command.Parameters.AddWithValue("@UserId", model.Name);
+            command.Parameters.AddWithValue("@UserId", model.Id);
             command.Parameters.AddWithValue("@TeamId", model.Team);
             command.Parameters.AddWithValue("@Description", model.Description);
             command.Parameters.AddWithValue("@TimeStamp", date1);
             command.ExecuteNonQuery();
+            using var command2 = conn.CreateCommand(); //Lager en ny kommando
+            command2.CommandType = System.Data.CommandType.Text; //Spesifiserer at kommandoen er typen text
+            command2.CommandText = query2; //Spesifiserer at kommandoteksten er lik query2
+            command2.Parameters.AddWithValue("@fName", model.fName); //legger til verdien fra fornavnet i modellen til @fName variabelen i query
+            command2.Parameters.AddWithValue("@lName", model.lName); //legger til verdien fra etternavnet i modellen til @lName variabelen i query2
+            command2.Parameters.AddWithValue("@title", model.Title); //legger til verdien fra fornavnet i modellen til @fName variabelen i query2
+            command2.ExecuteNonQuery(); //utfører kommandoen
         }
        
         public  IEnumerable<Suggestion> FetchSug() {
