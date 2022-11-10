@@ -132,14 +132,15 @@ namespace bacit_dotnet.MVC.DataAccess
             connection.Open();
 
             var Suggestions = new List<Suggestion>();
-            var reader = ReadSpeData("select sugId, Title, UserId, TeamId, Description from suggestions where sugId = @id", connection, id);
+            var reader = ReadSpeData("select * from suggestions inner join users on suggestions.userId = users.userId where suggestions.sugId = @id;", connection, id);
             while (reader.Read())
             {
                 var user = new Suggestion();
                 user.sugId = reader.GetInt32("sugId");
                 user.Title = reader.GetString("Title");
-                user.Name = reader.GetInt32("UserId");
-                user.teamId = reader.GetInt32("TeamId");
+                user.fName = reader.GetString("firstname");
+                user.lName = reader.GetString("lastname");
+                user.teamId = reader.GetInt32("teamId");
                 user.Description = reader.GetString("Description");
                 Suggestions.Add(user);
             }
