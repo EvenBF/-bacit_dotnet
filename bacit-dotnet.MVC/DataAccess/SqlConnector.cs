@@ -167,10 +167,8 @@ namespace bacit_dotnet.MVC.DataAccess
             
         }
 
-        private void UpdateSuggestions(String query, string query2, MySqlConnection conn, SuggestionViewModel user, int id)
+        private void UpdateSuggestions(String query, String query2, MySqlConnection conn, SuggestionViewModel user, int id)
         {
-            Console.WriteLine(id);
-            
             using var command = conn.CreateCommand();
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = query;
@@ -222,9 +220,8 @@ namespace bacit_dotnet.MVC.DataAccess
             UpdateGodkjenn(query, connection, model, id);
             
         }
-         private void UpdateGodkjenn(String query, MySqlConnection conn, SuggestionViewModel user, int id){
-            Console.WriteLine(id);
-            Console.WriteLine(user.Status);
+         private void UpdateGodkjenn(String query, MySqlConnection conn, SuggestionViewModel user, int id)
+         {
             using var command = conn.CreateCommand();
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = query;
