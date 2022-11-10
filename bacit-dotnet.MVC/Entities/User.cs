@@ -13,7 +13,7 @@
         public int sugId { get; set; }
         public string Title { get; set; }
         public int Id {get; set;}
-        public int userId {get; set}
+        public int userId {get; set;}
         public string fName { get; set; }
         public string lName {get; set;}
         public string Team { get; set; }
