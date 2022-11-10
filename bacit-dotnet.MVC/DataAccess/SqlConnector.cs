@@ -87,7 +87,7 @@ namespace bacit_dotnet.MVC.DataAccess
         {
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
             connection.Open();
-            var query = "insert into suggestions (Title, UserId, TeamId, Description, TimeStamp) values (@Title, @UserId, @TeamId, @Description, @TimeStamp)";
+            var query = "insert into suggestions (Title, UserId, TeamId, Description, TimeStamp) values (@Title, @UserId, @TeamId, @Description, @TimeStamp)"; //Legger til verdiene i tabellen
             var query2 = "update suggestions set userId = (select userId from users where users.firstname=@fName and users.lastname=@lName) where title=@title;"; //oppdaterer userId etter matchende fornavn, etternavn og title
             InsertSuggestions(query, query2, connection, model);
         }
@@ -161,12 +161,13 @@ namespace bacit_dotnet.MVC.DataAccess
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
             connection.Open();
             
-            var query = "update suggestions set title=@Title,userid=@Name,teamId = @Team,description=@Description, statusName=@Status where sugId =  @id;";
-            UpdateSuggestions(query, connection, model, id);
+            var query = "update suggestions set title=@Title,teamId = @Team,description=@Description, statusName=@Status where sugId =  @id;";
+            var query2 = "update suggestions set userId = (select userId from users where users.firstname = @fName AND users.lastname = @lName) where suggestions.sugId = @id";
+            UpdateSuggestions(query, query2, connection, model, id);
             
         }
 
-        private void UpdateSuggestions(String query, MySqlConnection conn, SuggestionViewModel user, int id)
+        private void UpdateSuggestions(String query, string query2, MySqlConnection conn, SuggestionViewModel user, int id)
         {
             Console.WriteLine(id);
             
@@ -174,14 +175,19 @@ namespace bacit_dotnet.MVC.DataAccess
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = query;
             command.Parameters.AddWithValue("@Title", user.Title); 
-            command.Parameters.AddWithValue("@Name", user.Name);
             command.Parameters.AddWithValue("@Team", user.Team);
             command.Parameters.AddWithValue("@Description", user.Description);
             command.Parameters.AddWithValue("@Status", user.Status);
             command.Parameters.AddWithValue("@id", id);
-            
-          
             command.ExecuteNonQuery();
+             using var command2 = conn.CreateCommand();
+            command2.CommandType = System.Data.CommandType.Text;
+            command2.CommandText = query2;
+            command2.Parameters.AddWithValue("@fName", user.fName);
+            command2.Parameters.AddWithValue("@lName", user.lName);
+            command2.Parameters.AddWithValue("@id", id);
+            command2.ExecuteNonQuery();
+
         }
 
         public void DeleteValueSetSug(SuggestionViewModel model, int id)
