@@ -90,22 +90,22 @@ select * from subTeam;
 
 delete from suggestions;
 
-insert into suggestions (title, description, userId, statusName)
+insert into suggestions (title, description, userId, teamId, statusName)
 values
-('Vask opp', 'Dere må vaske opp i kantina', '3', 'Pending'),
-('Kost gulvet', 'Dere må koste gulvet i møterom 1', '2', 'Act'),
-('Lyspære', 'Må bytte lyspære ved inngangen', '5', 'Plan'),
-('Fiks PC', 'PCene er for gamle, de fryser bare man skriver en setning', '7', 'Act'),
-('Hierarkifeil', 'Vi føler at man ikke trenger teamleder i logistikk Lyngdal', '15', 'Do'),
-('Ødelagte paller', 'Paller blir ødelagt veldig fort grunnet korte spikre', '20', 'Act'),
-('Temperatur', 'Det er for kaldt i kantina', '1', 'Do'),
-('Badet', 'Badet  trenger ny dør', '17', 'Do'),
-('Treverk', 'Treverket er for dårlig i vår siste leveranse. Stammen var for gammel.', '18', 'Act'),
-('Glassdør', 'Glassdør knuser for fort og det kommer glasskår overalt som ikke er bra :-(', '12', 'Study'),
-('Kaldt gulv', 'Det er kaldt gulv i produksjonshallen', '17', 'Act'),
-('Lys', 'Lys i gangen blinker', '17', 'Study'),
-('Rake blader', 'Mya blader ved inngangen', '1', 'Do'),
-('Oppvask', 'Det er mye oppvask som ikke er tatt', '5', 'Act');
+('Vask opp', 'Dere må vaske opp i kantina', '3', '1' 'Pending'),
+('Kost gulvet', 'Dere må koste gulvet i møterom 1', '2', '3' 'Act'),
+('Lyspære', 'Må bytte lyspære ved inngangen', '5', '2', 'Plan'),
+('Fiks PC', 'PCene er for gamle, de fryser bare man skriver en setning', '7', '4', 'Act'),
+('Hierarkifeil', 'Vi føler at man ikke trenger teamleder i logistikk Lyngdal', '15', '1', 'Do'),
+('Ødelagte paller', 'Paller blir ødelagt veldig fort grunnet korte spikre', '20', '2', 'Act'),
+('Temperatur', 'Det er for kaldt i kantina', '1', '3', 'Do'),
+('Badet', 'Badet  trenger ny dør', '17', '4', 'Do'),
+('Treverk', 'Treverket er for dårlig i vår siste leveranse. Stammen var for gammel.', '18', '4', 'Act'),
+('Glassdør', 'Glassdør knuser for fort og det kommer glasskår overalt som ikke er bra :-(', '12', '3', 'Study'),
+('Kaldt gulv', 'Det er kaldt gulv i produksjonshallen', '17', '2', 'Act'),
+('Lys', 'Lys i gangen blinker', '17', '1', 'Study'),
+('Rake blader', 'Mya blader ved inngangen', '1', '2', 'Do'),
+('Oppvask', 'Det er mye oppvask som ikke er tatt', '5', '4', 'Act');
 
 select * from suggestions; 
 
