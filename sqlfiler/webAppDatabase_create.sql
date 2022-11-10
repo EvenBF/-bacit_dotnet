@@ -1,15 +1,30 @@
 USE webAppDatabase;
-alter database webAppDatabase character set utf8 collate utf8_general_ci;
-set names utf8;
-alter database webAppDatabase character set utf8;
 
 drop table teamUser;
 drop table suggestions;
-drop table users;
-drop table teamLeader;
 drop table administrator;
+drop table teamLeader;
+drop table users;
 drop table subTeam;
 drop table team;
+drop table status;
+
+CREATE TABLE status(
+    statusName varchar(20) DEFAULT "Pending"  primary key
+);
+
+CREATE TABLE team (
+    teamId INT auto_increment primary key, 
+    teamName VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE subTeam (
+    subTeamId INT auto_increment primary key, 
+    subTeamName VARCHAR(20) NOT NULL,
+    teamId INT, 
+    CONSTRAINT subTeamFK
+    FOREIGN KEY (teamId) REFERENCES team(teamId)
+);
 
 CREATE TABLE users (
     userId INT auto_increment PRIMARY KEY,
@@ -19,13 +34,18 @@ CREATE TABLE users (
     phone VARCHAR(12) NOT NULL
 );
 
-CREATE TABLE team (
-    teamId INT auto_increment primary key, 
-    teamName VARCHAR(20) NOT NULL
+CREATE TABLE teamLeader (
+    leaderId INT auto_increment PRIMARY KEY,
+    userId INT,
+    CONSTRAINT userLeaderFK 
+    FOREIGN KEY (userId) REFERENCES users(userId)
 );
 
-CREATE TABLE status(
-    statusName varchar(20) DEFAULT "Pending"  primary key
+CREATE TABLE administrator (
+    adminId INT auto_increment PRIMARY KEY,
+    userId INT,
+    CONSTRAINT userAdminFK 
+    FOREIGN KEY (userId) REFERENCES users(userId)
 );
 
 CREATE TABLE suggestions (
@@ -44,8 +64,6 @@ CREATE TABLE suggestions (
     FOREIGN KEY (statusName) REFERENCES status(statusName)
 );
 
-
-
 CREATE TABLE teamUser (
     teamId INT,
     subTeamId INT,
@@ -61,24 +79,6 @@ CREATE TABLE teamUser (
     FOREIGN KEY (subTeamId) REFERENCES subTeam(subTeamId)
 );
 
-CREATE TABLE subTeam (
-    subTeamId INT auto_increment primary key, 
-    subTeamName VARCHAR(20) NOT NULL,
-    teamId INT, 
-    CONSTRAINT subTeamFK
-    FOREIGN KEY (teamId) REFERENCES team(teamId)
-);
 
-CREATE TABLE teamLeader (
-    leaderId INT auto_increment PRIMARY KEY,
-    userId INT,
-    CONSTRAINT userLeaderFK 
-    FOREIGN KEY (userId) REFERENCES users(userId)
-);
 
-CREATE TABLE administrator (
-    adminId INT auto_increment PRIMARY KEY,
-    userId INT,
-    CONSTRAINT userAdminFK 
-    FOREIGN KEY (userId) REFERENCES users(userId)
-);
+
