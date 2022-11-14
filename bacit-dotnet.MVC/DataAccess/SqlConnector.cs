@@ -155,18 +155,18 @@ namespace bacit_dotnet.MVC.DataAccess
             return Suggestions;
         }
 
-        public void UpdateValueSetSug(SuggestionViewModel model, int id)
+        public void UpdateValueSetSug(SuggestionViewModel model, int sugId)
         {
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
             connection.Open();
             
-            var query = "update suggestions set title=@Title,teamId = @Team,description=@Description, statusName=@Status where sugId =  @id;";
-            var query2 = "update suggestions set userId = (select userId from users where users.firstname = @fName AND users.lastname = @lName) where suggestions.sugId = @id";
-            UpdateSuggestions(query, query2, connection, model, id);
+            var query = "update suggestions set title=@Title,teamId = @Team,description=@Description, statusName=@Status where sugId =  @sugId;";
+            var query2 = "update suggestions set userId = (select userId from users where users.firstname = @fName AND users.lastname = @lName) where suggestions.sugId = @sugId";
+            UpdateSuggestions(query, query2, connection, model, sugId);
             
         }
 
-        private void UpdateSuggestions(String query, String query2, MySqlConnection conn, SuggestionViewModel user, int id)
+        private void UpdateSuggestions(String query, String query2, MySqlConnection conn, SuggestionViewModel user, int sugId)
         {
             using var command = conn.CreateCommand();
             command.CommandType = System.Data.CommandType.Text;
@@ -175,37 +175,35 @@ namespace bacit_dotnet.MVC.DataAccess
             command.Parameters.AddWithValue("@Team", user.Team);
             command.Parameters.AddWithValue("@Description", user.Description);
             command.Parameters.AddWithValue("@Status", user.Status);
-            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@id", sugId);
             command.ExecuteNonQuery();
             using var command2 = conn.CreateCommand();
             command2.CommandType = System.Data.CommandType.Text;
             command2.CommandText = query2;
             command2.Parameters.AddWithValue("@fName", user.fName);
             command2.Parameters.AddWithValue("@lName", user.lName);
-            command2.Parameters.AddWithValue("@id", id);
+            command2.Parameters.AddWithValue("@id", sugId);
             command2.ExecuteNonQuery();
 
         }
 
-        public void DeleteValueSetSug(SuggestionViewModel model, int id)
+        public void DeleteValueSetSug(SuggestionViewModel model, int sugId)
         {
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
             connection.Open();
             
-            var query = "DELETE FROM suggestions where sugId = @id;";
-            UpdateSuggestions(query, connection, model, id);
+            var query = "DELETE FROM suggestions where sugId = @sugId;";
+            UpdateSuggestions(query, connection, model, sugId);
             
         }
 
-        private void DeleteSuggestions(String query, MySqlConnection conn, SuggestionViewModel user, int id)
+        private void DeleteSuggestions(String query, MySqlConnection conn, SuggestionViewModel user, int sugId)
         {
-            Console.WriteLine(id);
-            
             using var command = conn.CreateCommand();
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = query;
 
-            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@id", sugId);
           
             command.ExecuteNonQuery();
         }
