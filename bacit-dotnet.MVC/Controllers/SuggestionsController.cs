@@ -58,6 +58,7 @@ namespace bacit_dotnet.MVC.Controllers
         public IActionResult EditSave(SuggestionViewModel model, int id)
         {
             sqlConnector.UpdateValueSetSug(model, id);
+            var data = sqlConnector.FetchSug();
 
 
             dynamic mymodel = new SuggestionModel();

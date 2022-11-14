@@ -87,7 +87,7 @@ namespace bacit_dotnet.MVC.DataAccess
         {
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
             connection.Open();
-            var query = "insert into suggestions (Title, UserId, TeamId, Description, TimeStamp) values (@Title, @UserId, @TeamId, @Description, @TimeStamp)"; //Legger til verdiene i tabellen
+            var query = "insert into suggestions (Title, TeamId, Description, TimeStamp) values (@Title, @TeamId, @Description, @TimeStamp)"; //Legger til verdiene i tabellen
             var query2 = "update suggestions set userId = (select userId from users where users.firstname=@fName and users.lastname=@lName) where title=@title;"; //oppdaterer userId etter matchende fornavn, etternavn og title
             InsertSuggestions(query, query2, connection, model);
         }
@@ -99,7 +99,6 @@ namespace bacit_dotnet.MVC.DataAccess
             command.CommandType = System.Data.CommandType.Text; 
             command.CommandText = query;
             command.Parameters.AddWithValue("@Title", model.Title); 
-            command.Parameters.AddWithValue("@UserId", model.Id);
             command.Parameters.AddWithValue("@TeamId", model.Team);
             command.Parameters.AddWithValue("@Description", model.Description);
             command.Parameters.AddWithValue("@TimeStamp", date1);
@@ -178,7 +177,7 @@ namespace bacit_dotnet.MVC.DataAccess
             command.Parameters.AddWithValue("@Status", user.Status);
             command.Parameters.AddWithValue("@id", id);
             command.ExecuteNonQuery();
-             using var command2 = conn.CreateCommand();
+            using var command2 = conn.CreateCommand();
             command2.CommandType = System.Data.CommandType.Text;
             command2.CommandText = query2;
             command2.Parameters.AddWithValue("@fName", user.fName);
@@ -216,7 +215,7 @@ namespace bacit_dotnet.MVC.DataAccess
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
             connection.Open();
         
-            string query = "update suggestions set Status = @statusName where sugId =  @id;";
+            string query = "update suggestions set statusName = @statusName where sugId =  @id;";
             UpdateGodkjenn(query, connection, model, id);
             
         }
