@@ -55,7 +55,7 @@ CREATE TABLE suggestions (
     description varchar(500) NOT NULL,
     TimeStamp TIMESTAMP,
     userId INT,
-    statusName varchar(20),
+    statusName varchar(20) default "Pending",
     CONSTRAINT userFK
     FOREIGN KEY (userId) REFERENCES users(userId),
     CONSTRAINT teamFK
