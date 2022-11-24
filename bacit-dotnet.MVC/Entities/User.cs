@@ -7,6 +7,10 @@
         public string Email { get; set; }
         public string Phone { get; set; }
     }
+        public class SpesUser
+    {
+        public int Id { get; set; }
+    }
 
     public class Suggestion
     {

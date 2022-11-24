@@ -1,18 +1,28 @@
-﻿@model bacit_dotnet.MVC.Models.Suggestions.SuggestionViewModel
+﻿@model bacit_dotnet.MVC.Models.SuggestionModel
 <link rel="stylesheet" href="~/css/sugIndex.css" asp-append-version="true" />
 
 <h1>AnssattRegistrering</h1>
 
 <div class="container">
-    <form action="/suggestions/save" method="post">
+    <form action="/Users/Save" method="post">
         <div class="row">
             <div class="col-l">
-                <label for="Name">Navn</label>
+                <label for="FirstName">FirstName</label>
             </div>
             <div class="col-i">
-                <input type="text" required="required" oninvalid="this.setCustomValidity('Obligatorisk')" oninput="this.setCustomValidity('')" placeholder="Navn" name="Name" />
+                <input type="text" required="required" oninvalid="this.setCustomValidity('Obligatorisk')" oninput="this.setCustomValidity('')" placeholder="FirstName" name="FirstName" />
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-l">
+                <label for="LastName">Last Name</label>
+            </div>
+            <div class="col-i">
+                <input type="text" required="required" oninvalid="this.setCustomValidity('Obligatorisk')" oninput="this.setCustomValidity('')" placeholder="LastNavn" name="LastName" />
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-l">
                 <label for="Password">Passord</label>
@@ -21,19 +31,33 @@
                 <input type="Password" required="required" oninvalid="this.setCustomValidity('Obligatorisk')" oninput="this.setCustomValidity('')"placeholder="Passord" name="Password" />
             </div>
         </div>
-        <div class="row">
-            <div class="col-l">
-                <label for="Role">Rolle</label>
-            </div>
-            <div class="col-i">
-                <textarea type="text" required="required" oninvalid="this.setCustomValidity('Obligatorisk')" oninput="this.setCustomValidity('')" placeholder="Rolle" name="Role"></textarea>
-            </div>
             <div class="row">
             <div class="col-l">
                 <label for="Email">Email</label>
             </div>
             <div class="col-i">
                 <textarea type="text" required="required" oninvalid="this.setCustomValidity('Obligatorisk')" oninput="this.setCustomValidity('')" placeholder="Email" name="Email"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-l">
+                <label for="Phone">Phone</label>
+            </div>
+            <div class="col-i">
+                <textarea type="text" required="required" oninvalid="this.setCustomValidity('Obligatorisk')" oninput="this.setCustomValidity('')" placeholder="Phone" name="Phone"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-l">
+                <label for="Team">Team</label>
+            </div>
+            <div class="col-i">
+                <select name=Team id=Team>
+                
+                   @foreach (var team in Model.Teams)
+                {
+                   <option value="@team.teamId">@team.teamName</option>
+                }  
             </div>
         </div>
         <br>

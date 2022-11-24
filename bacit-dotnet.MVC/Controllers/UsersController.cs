@@ -1,35 +1,33 @@
 ﻿using bacit_dotnet.MVC.Models.Users;
-using bacit_dotnet.MVC.Repositories;
+
 using Microsoft.AspNetCore.Mvc;
+using bacit_dotnet.MVC.DataAccess;
+using bacit_dotnet.MVC.Models;
 
 namespace bacit_dotnet.MVC.Controllers
 {
     public class UsersController : Controller
     {
-        private readonly IUserRepository userRepository;
+        private readonly ILogger<UsersController> _logger;
+        private readonly ISqlConnector sqlConnector;
 
-        public UsersController(IUserRepository userRepository)
+        public UsersController(ILogger<UsersController> logger, ISqlConnector sqlConnector)
         {
-            this.userRepository = userRepository;
+            _logger = logger;
+            this.sqlConnector = sqlConnector;
         }
         public IActionResult Index()
         {
-
-            return View();
+            var data = sqlConnector.GetTeam();
+            var model = new SuggestionModel();
+            model.Teams = data;
+            return View(model);
         }
         [HttpPost]
-        public IActionResult Save(UserViewModel model) {
-
-            UserEntity newUser = new UserEntity { 
-                Name = model.Name,
-                Email = model.Email,
-                EmployeeNumber = model.EmployeeNumber,
-                Password = model.Password,
-                Role = model.Role,
-                Team = model.Team
-            };
-            userRepository.Save(newUser);
-            return View("Index");
+        public IActionResult Save(UserViewModel model)
+        {
+            sqlConnector.SetUserParam(model);
+            return View(model);
         }
     }
 }

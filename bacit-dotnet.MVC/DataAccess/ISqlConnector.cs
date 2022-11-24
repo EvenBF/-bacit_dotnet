@@ -1,6 +1,8 @@
 ﻿using bacit_dotnet.MVC.Entities;
 using bacit_dotnet.MVC.Models.Suggestions;
 using bacit_dotnet.MVC.Models.Teams;
+using bacit_dotnet.MVC.Models.Users;
+
 namespace bacit_dotnet.MVC.DataAccess
 {
     public interface ISqlConnector
@@ -18,5 +20,7 @@ namespace bacit_dotnet.MVC.DataAccess
 
         void UpdateValueSetGodkjenn(SuggestionViewModel model, int id);
         void SetTeamParam(TeamViewModel model);
+
+        public void SetUserParam(UserViewModel model);
     }
 }
