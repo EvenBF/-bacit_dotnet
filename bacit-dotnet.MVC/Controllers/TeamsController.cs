@@ -29,12 +29,10 @@ namespace bacit_dotnet.MVC.Controllers
         [HttpGet]
         public IActionResult viewTeam()
         {
-
             var data = sqlConnector.GetTeam();
             var model = new TeamModel();
             model.team = data;
             return View(model);
-
         }
     }
 }

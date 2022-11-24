@@ -2,6 +2,7 @@
 using MySqlConnector;
 using bacit_dotnet.MVC.Models.Suggestions;
 using bacit_dotnet.MVC.Models.Teams;
+using bacit_dotnet.MVC.Models.Users;
 
 namespace bacit_dotnet.MVC.DataAccess
 {
@@ -261,5 +262,58 @@ namespace bacit_dotnet.MVC.DataAccess
             connection.Close();
             return users;
         }
-    }
+        public void SetUserParam(UserViewModel model)
+        {
+            using var connection = new  MySqlConnection(config.GetConnectionString("MariaDb"));
+            connection.Open();
+            var query = "insert into users (firstName, lastName, email, phone) values (@fname, @lname, @email, @phone)";
+            InsertUser(query, connection, model);
+        }
+
+        private void InsertUser(string query, MySqlConnection conn, UserViewModel model)
+        {
+            DateTime date1 = DateTime.Now;
+            using var command = conn.CreateCommand();
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = query;
+            command.Parameters.AddWithValue("@fname", model.firstName);
+            command.Parameters.AddWithValue("@lname", model.lastName);
+            command.Parameters.AddWithValue("@email", model.email);
+            command.Parameters.AddWithValue("@phone", model.phone);
+
+            command.ExecuteNonQuery();
+        }
+
+    /*
+        public void SetUser2Team(UserViewModel model)
+        {
+            using var connection = new  MySqlConnection(config.GetConnectionString("MariaDb"));
+            connection.Open();
+            var query = "insert into users (teamId, subTeamId, userId, TimeStamp) values (@teamId, @subTeamId, @userId, @TimeStamp)";
+            InsertUser2Team(query, connection, model);
+        }
+
+        private void InsertUser2Team(string query, MySqlConnection conn, UserViewModel model)
+        {
+            DateTime date1 = DateTime.Now;
+            Console.WriteLine();
+            using var command = conn.CreateCommand();
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = query;
+            command.Parameters.AddWithValue("@teamId", model.teamId);
+            command.Parameters.AddWithValue("@subTeamId", model.subTeamId);
+            command.Parameters.AddWithValue("@userId", model.userId);
+            command.Parameters.AddWithValue("@TimeStamp", date1);
+
+            command.ExecuteNonQuery();
+
+
+            command.Parameters.AddWithValue("@teamId", model.teamId);
+            command.Parameters.AddWithValue("@subTeamId", model.subTeamId);
+            command.Parameters.AddWithValue("@userId", model.userId);
+            command.Parameters.AddWithValue("@TimeStamp", date1);
+            insert into teamUser (teamId, subTeamId, userId, TimeStamp) values (@teamId, @subTeamId, @userId, @TimeStamp) ";
+        } */
 }
+}
+
