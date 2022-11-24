@@ -14,12 +14,16 @@
             <p>Team: @user.Team </p> 
             <p>Beskrivelse: @user.Description</p>
             <p>Tid: @user.TimeStamp</p>
-            <p>Status: @user.Status</p>
+            <p>PDSA: @user.Status</p>
+            <p>Status: @user.StatusApp</p>
 
             <form action="/suggestions/Godkjenn" method="post">
             <input type="hidden" name="id" value=@user.sugId> 
             <input type="hidden" name="id" value=@user.sugId>
-                 <p>
+                 <p> 
+
+                 </p>
+                    <p>
                      <label for="Status">Status</label>
                          <select name=Status id=Status>
                          <option value="Godkjent">Godkjent</option>

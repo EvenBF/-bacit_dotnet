@@ -18,6 +18,7 @@
         public string Description { get; set; }
         public DateTime TimeStamp { get; set; }
         public string Status { get; set; }
+        public string StatusApp {get; set;}
  }
     public class team
     {
@@ -30,4 +31,5 @@
     {
         public string name { get; set; }
     }
+
 }
