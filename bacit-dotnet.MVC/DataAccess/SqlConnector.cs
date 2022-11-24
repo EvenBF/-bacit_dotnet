@@ -120,6 +120,7 @@ namespace bacit_dotnet.MVC.DataAccess
                 user.Description = reader.GetString("Description");
                 user.TimeStamp = reader.GetDateTime("TimeStamp");
                 user.Status = reader.GetString("statusName");
+                user.StatusApp = reader.GetString("statusApprove");
                 Suggestions.Add(user);
             }
             connection.Close();
@@ -202,17 +203,22 @@ namespace bacit_dotnet.MVC.DataAccess
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
             connection.Open();
         
-            string query = "update suggestions set Status = @statusName where sugId =  @id;";
+            string query = "update suggestions set statusApprove = @statusApprove where sugId =  @id;";
             UpdateGodkjenn(query, connection, model, id);
+
+            FetchSug();
             
         }
+
+
+
          private void UpdateGodkjenn(String query, MySqlConnection conn, SuggestionViewModel user, int id){
             Console.WriteLine(id);
             Console.WriteLine(user.Status);
             using var command = conn.CreateCommand();
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = query;
-            command.Parameters.AddWithValue("@statusName", user.Status);
+            command.Parameters.AddWithValue("@statusApprove", user.Status);
             command.Parameters.AddWithValue("@id", id);
 
             command.ExecuteNonQuery();
@@ -243,7 +249,7 @@ namespace bacit_dotnet.MVC.DataAccess
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
             connection.Open();
 
-            var reader = ReadData("SELECT statusName from status;", connection);
+            var reader = ReadData("SELECT statusName from statusName;", connection);
 
             var users = new List<status>();
             while (reader.Read())

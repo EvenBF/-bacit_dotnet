@@ -7,9 +7,9 @@ drop table teamLeader;
 drop table users;
 drop table subTeam;
 drop table team;
-drop table status;
+drop table statusName;
 
-CREATE TABLE status(
+CREATE TABLE statusName(
     statusName varchar(20) DEFAULT "Pending"  primary key
 );
 
@@ -55,13 +55,14 @@ CREATE TABLE suggestions (
     description varchar(500) NOT NULL,
     TimeStamp TIMESTAMP,
     userId INT,
-    statusName varchar(20) default "Pending",
+    statusName varchar(20) DEFAULT "Pending",
+    statusApprove varchar(20) NOT NULL DEFAULT "Pending",
     CONSTRAINT userFK
     FOREIGN KEY (userId) REFERENCES users(userId),
     CONSTRAINT teamFK
     FOREIGN KEY (teamId) REFERENCES team(teamId),
-    CONSTRAINT statusName
-    FOREIGN KEY (statusName) REFERENCES status(statusName)
+    CONSTRAINT statusNameFK
+    FOREIGN KEY (statusName) REFERENCES statusName(statusName)
 );
 
 CREATE TABLE teamUser (

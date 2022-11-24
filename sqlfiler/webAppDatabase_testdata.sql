@@ -92,8 +92,8 @@ delete from suggestions;
 
 insert into suggestions (title, description, userId, teamId, statusName)
 values
-('Vask opp', 'Dere må vaske opp i kantina', '3', '1' 'Pending'),
-('Kost gulvet', 'Dere må koste gulvet i møterom 1', '2', '3' 'Act'),
+('Vask opp', 'Dere må vaske opp i kantina', '3', '1', 'Pending'),
+('Kost gulvet', 'Dere må koste gulvet i møterom 1', '2', '3', 'Act'),
 ('Lyspære', 'Må bytte lyspære ved inngangen', '5', '2', 'Plan'),
 ('Fiks PC', 'PCene er for gamle, de fryser bare man skriver en setning', '7', '4', 'Act'),
 ('Hierarkifeil', 'Vi føler at man ikke trenger teamleder i logistikk Lyngdal', '15', '1', 'Do'),
@@ -136,9 +136,9 @@ values
 
 select * from teamUser; 
 
-delete from status;
+delete from statusName;
 
-insert into status (statusName)
+insert into statusName (statusName)
 values 
 ('Pending'), 
 ('Plan'), 
@@ -146,4 +146,4 @@ values
 ('Study'),
 ('Act');
 
-select * from status; 
+select * from statusName; 
