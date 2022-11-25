@@ -283,37 +283,38 @@ namespace bacit_dotnet.MVC.DataAccess
 
             command.ExecuteNonQuery();
         }
-
-    /*
-        public void SetUser2Team(UserViewModel model)
+        public IEnumerable<User>ReadUser(UserViewModel model)
         {
-            using var connection = new  MySqlConnection(config.GetConnectionString("MariaDb"));
+            using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
             connection.Open();
-            var query = "insert into users (teamId, subTeamId, userId, TimeStamp) values (@teamId, @subTeamId, @userId, @TimeStamp)";
-            InsertUser2Team(query, connection, model);
+            var Suggestions = new List<User>();
+            var reader = ReadData("select userId from users where firstname = @fname AND lastname = @lname AND phone = @phone", connection);
+            while (reader.Read())
+            {
+                var user = new User();
+                user.Id = reader.GetInt32("userId");
+
+                Suggestions.Add(user);
+            }
+            connection.Close();
+            return Suggestions;
+            }
+
+            public  IEnumerable<team> FetSpeAns(int id) {
+            using var connection = new MySqlConnection(config.GetConnectionString("MariaDb"));
+            connection.Open();
+
+            var teams = new List<team>();
+            var reader = ReadSpeData("select CONCAT(firstname, ' ', lastname) AS name from users INNER JOIN teamUser ON teamUser.userId = users.userId AND teamUser.teamId = @id;", connection, id);
+            while (reader.Read())
+            {
+                var team = new team();
+                team.teamName = reader.GetString("name");
+                teams.Add(team);
+            }
+            connection.Close();
+            return teams;
         }
-
-        private void InsertUser2Team(string query, MySqlConnection conn, UserViewModel model)
-        {
-            DateTime date1 = DateTime.Now;
-            Console.WriteLine();
-            using var command = conn.CreateCommand();
-            command.CommandType = System.Data.CommandType.Text;
-            command.CommandText = query;
-            command.Parameters.AddWithValue("@teamId", model.teamId);
-            command.Parameters.AddWithValue("@subTeamId", model.subTeamId);
-            command.Parameters.AddWithValue("@userId", model.userId);
-            command.Parameters.AddWithValue("@TimeStamp", date1);
-
-            command.ExecuteNonQuery();
-
-
-            command.Parameters.AddWithValue("@teamId", model.teamId);
-            command.Parameters.AddWithValue("@subTeamId", model.subTeamId);
-            command.Parameters.AddWithValue("@userId", model.userId);
-            command.Parameters.AddWithValue("@TimeStamp", date1);
-            insert into teamUser (teamId, subTeamId, userId, TimeStamp) values (@teamId, @subTeamId, @userId, @TimeStamp) ";
-        } */
 }
 }
 

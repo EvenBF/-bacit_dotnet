@@ -1,0 +1,14 @@
+@model bacit_dotnet.MVC.Models.TeamModel
+<link rel="stylesheet" href="~/css/viewTeam.css" asp-append-version="true" />
+
+<h4>Ansatte i Teamet</h4>
+
+<div class="flex-container">
+    @foreach (var team in Model.team) 
+    {
+    <input type="hidden" name="id" value=@team.teamName>
+    
+    <h1> <b>Name:</b> <br> "@team.teamName" </h1>
+    
+    }
+</div>
