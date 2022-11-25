@@ -8,8 +8,10 @@
 <div class="flex-container">
     @foreach (var team in Model.team) 
     {
+         <input type="hidden" name="id" value=@team.teamId> 
         <div>
             <h3>@team.teamName</h3>
+            <a href="/Teams/TeamUser?id=@team.teamId"><button type="button" id="knapp1">Se Ansatt i Team</button></a>
         </div>
     }
 </div>

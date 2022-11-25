@@ -27,12 +27,22 @@ namespace bacit_dotnet.MVC.Controllers
             return View(model);
         }
         [HttpGet]
-        public IActionResult viewTeam()
+        public IActionResult viewTeam(int id)
         {
             var data = sqlConnector.GetTeam();
             var model = new TeamModel();
             model.team = data;
             return View(model);
         }
+
+        [HttpGet]
+        public IActionResult TeamUser(int id)
+        {
+            var data = sqlConnector.FetSpeAns(id);
+            var model = new TeamModel();
+            model.team = data;
+
+            return View(model);
+    }
     }
 }

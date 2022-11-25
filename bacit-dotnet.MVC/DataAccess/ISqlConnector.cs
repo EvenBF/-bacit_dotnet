@@ -22,5 +22,6 @@ namespace bacit_dotnet.MVC.DataAccess
         void SetTeamParam(TeamViewModel model);
 
         public void SetUserParam(UserViewModel model);
+        public  IEnumerable<team> FetSpeAns(int id);
     }
 }
